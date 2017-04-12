@@ -8,10 +8,11 @@
 
 import Foundation
 import CoreLocation
+import RealmSwift
 
 struct Drink {
-    enum RatingScale {
-        case notRecommended
+    enum RatingScale: Int {
+        case notRecommended = 0
         case mediocre
         case good
         case veryGood
@@ -32,6 +33,26 @@ struct Drink {
     let location: CLLocation
     let category: Category
     let photoURL: URL
-    let name: String
-    let comment: String
+    let name: String?
+    let comment: String?
+}
+
+final class DrinkObject: Object {
+    dynamic var UUID: String = ""
+    dynamic var createdAt: Date = Date()
+    dynamic var rating: Int = 0
+    dynamic var latitude: Double = 0.0
+    dynamic var longitude: Double = 0.0
+    dynamic var category: String = ""
+    dynamic var photoURLString: String = ""
+    dynamic var name: String? = nil
+    dynamic var comment: String? = nil
+    
+    override static func primaryKey() -> String? {
+        return "UUID"
+    }
+    
+    override static func indexedProperties() -> [String] {
+        return ["createdAt", "rating", "category"]
+    }
 }
