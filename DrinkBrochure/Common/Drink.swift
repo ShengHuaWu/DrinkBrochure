@@ -22,7 +22,7 @@ struct Drink {
     enum Category {
         case beer
         case wine
-        case whisky
+        case whiskey
         case sake
         case other(name: String)
     }
