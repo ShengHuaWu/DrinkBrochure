@@ -49,3 +49,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+## Firebase plist
+GoogleService-Info.plist

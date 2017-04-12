@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */; };
+		9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */; };
 		9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */; };
 		9BB9A1501E9DBAD900ABBC3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14F1E9DBAD900ABBC3D /* ViewController.swift */; };
 		9BB9A1551E9DBAD900ABBC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9BB9A14A1E9DBAD900ABBC3D /* DrinkBrochure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkBrochure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BB9A14F1E9DBAD900ABBC3D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */,
+				9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +58,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B8AE3861E9DBFE400A4D6C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */,
+				9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9BB9A1411E9DBAD900ABBC3D = {
 			isa = PBXGroup;
 			children = (
 				9BB9A14C1E9DBAD900ABBC3D /* DrinkBrochure */,
 				9BB9A1611E9DBADA00ABBC3D /* DrinkBrochureTests */,
 				9BB9A14B1E9DBAD900ABBC3D /* Products */,
+				9B8AE3861E9DBFE400A4D6C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +116,7 @@
 				9BB9A1461E9DBAD900ABBC3D /* Sources */,
 				9BB9A1471E9DBAD900ABBC3D /* Frameworks */,
 				9BB9A1481E9DBAD900ABBC3D /* Resources */,
+				9B8AE38C1E9DBFFF00A4D6C5 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -186,6 +203,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B8AE38C1E9DBFFF00A4D6C5 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9BB9A1461E9DBAD900ABBC3D /* Sources */ = {
@@ -323,6 +359,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DrinkBrochure/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.DrinkBrochure;
@@ -335,6 +375,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DrinkBrochure/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.DrinkBrochure;
@@ -390,6 +434,7 @@
 				9BB9A1691E9DBADA00ABBC3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9BB9A16A1E9DBADA00ABBC3D /* Build configuration list for PBXNativeTarget "DrinkBrochureTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +443,7 @@
 				9BB9A16C1E9DBADA00ABBC3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
