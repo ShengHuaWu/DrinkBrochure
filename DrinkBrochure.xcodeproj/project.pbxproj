@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */; };
 		9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */; };
+		9B8AE38E1E9DC31400A4D6C5 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */; };
 		9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */; };
 		9BB9A1501E9DBAD900ABBC3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14F1E9DBAD900ABBC3D /* ViewController.swift */; };
 		9BB9A1551E9DBAD900ABBC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drink.swift; path = Common/Drink.swift; sourceTree = "<group>"; };
 		9BB9A14A1E9DBAD900ABBC3D /* DrinkBrochure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkBrochure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BB9A14F1E9DBAD900ABBC3D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B8AE38F1E9DC31C00A4D6C5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		9BB9A1411E9DBAD900ABBC3D = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 				9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */,
 				9BB9A1561E9DBAD900ABBC3D /* LaunchScreen.storyboard */,
 				9BB9A1591E9DBAD900ABBC3D /* Info.plist */,
+				9B8AE38F1E9DC31C00A4D6C5 /* Common */,
 			);
 			path = DrinkBrochure;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB9A1501E9DBAD900ABBC3D /* ViewController.swift in Sources */,
+				9B8AE38E1E9DC31400A4D6C5 /* Drink.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
