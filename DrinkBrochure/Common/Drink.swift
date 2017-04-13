@@ -27,7 +27,7 @@ struct Drink {
         case other(name: String)
     }
     
-    let UUID: String
+    let drinkID: String
     let createdAt: Date
     let rating: RatingScale
     let location: CLLocation
@@ -38,7 +38,7 @@ struct Drink {
 }
 
 final class DrinkObject: Object {
-    dynamic var UUID: String = ""
+    dynamic var drinkID: String = UUID().uuidString
     dynamic var createdAt: Date = Date()
     dynamic var rating: Int = 0
     dynamic var latitude: Double = 0.0
@@ -49,7 +49,7 @@ final class DrinkObject: Object {
     dynamic var comment: String? = nil
     
     override static func primaryKey() -> String? {
-        return "UUID"
+        return "drinkID"
     }
     
     override static func indexedProperties() -> [String] {
