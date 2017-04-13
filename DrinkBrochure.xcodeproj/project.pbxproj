@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B267B691E9F181E00A780CC /* EntityDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B681E9F181E00A780CC /* EntityDescriptor.swift */; };
+		9B267B701E9F253E00A780CC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B6F1E9F253E00A780CC /* Database.swift */; };
+		9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B711E9F295F00A780CC /* DatabaseTests.swift */; };
 		9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */; };
 		9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */; };
 		9B8AE38E1E9DC31400A4D6C5 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */; };
@@ -27,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B267B681E9F181E00A780CC /* EntityDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityDescriptor.swift; path = Common/EntityDescriptor.swift; sourceTree = "<group>"; };
+		9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrinkBrochureTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		9B267B6F1E9F253E00A780CC /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Common/Database.swift; sourceTree = "<group>"; };
+		9B267B711E9F295F00A780CC /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drink.swift; path = Common/Drink.swift; sourceTree = "<group>"; };
@@ -73,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */,
+				9B267B681E9F181E00A780CC /* EntityDescriptor.swift */,
+				9B267B6F1E9F253E00A780CC /* Database.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -113,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				9BB9A1641E9DBADA00ABBC3D /* Info.plist */,
+				9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */,
+				9B267B711E9F295F00A780CC /* DatabaseTests.swift */,
 			);
 			path = DrinkBrochureTests;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 					};
 					9BB9A15D1E9DBADA00ABBC3D = {
 						CreatedOnToolsVersion = 8.3.1;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 9BB9A1491E9DBAD900ABBC3D;
 					};
@@ -240,7 +252,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB9A1501E9DBAD900ABBC3D /* ViewController.swift in Sources */,
+				9B267B691E9F181E00A780CC /* EntityDescriptor.swift in Sources */,
 				9B8AE38E1E9DC31400A4D6C5 /* Drink.swift in Sources */,
+				9B267B701E9F253E00A780CC /* Database.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,10 +419,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = DrinkBrochureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.DrinkBrochureTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrinkBrochureTests/DrinkBrochureTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinkBrochure.app/DrinkBrochure";
 			};
@@ -418,10 +437,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				INFOPLIST_FILE = DrinkBrochureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.DrinkBrochureTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrinkBrochureTests/DrinkBrochureTests-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrinkBrochure.app/DrinkBrochure";
 			};
