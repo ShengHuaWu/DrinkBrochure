@@ -31,16 +31,16 @@ class DatabaseTests: XCTestCase {
     
     // MAEK: - Enabled Tests
     func testCreateAndDeleteDrink() {
-        let newDrink = Drink.one
-        database.createOrUpdate(with: Drink.createOrUpdate, for: newDrink)
+        let beer = Drink.beer
+        database.createOrUpdate(with: Drink.createOrUpdate, for: beer)
         
         var results = database.fetch(with: Drink.all)
         XCTAssert(results.count == 1)
         
         let drinkInDB = results.first!
         XCTAssert(drinkInDB.drinkID.characters.count > 0)
-        XCTAssert(drinkInDB.name == newDrink.name)
-        XCTAssert(drinkInDB.comment == newDrink.comment)
+        XCTAssert(drinkInDB.name == beer.name)
+        XCTAssert(drinkInDB.comment == beer.comment)
         
         database.delete(with: drinkInDB.delete)
         
@@ -51,5 +51,5 @@ class DatabaseTests: XCTestCase {
 
 // MARK: - Seed Data
 extension Drink {
-    static let one = Drink(drinkID: "", createdAt: Date(), rating: .good, location: CLLocation(latitude: 0.0, longitude: 0.0), category: .beer, photoURL: URL(string: "https://developer.apple.com")!, name: "Good Beer", comment: "This is a beer")
+    static let beer = Drink(drinkID: "", createdAt: Date(), rating: .good, location: CLLocation(latitude: 0.0, longitude: 0.0), category: .beer, photoURL: URL(string: "https://developer.apple.com")!, name: "Good Beer", comment: "This is a beer")
 }
