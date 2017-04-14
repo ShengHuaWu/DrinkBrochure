@@ -9,37 +9,56 @@
 import Foundation
 import RealmSwift
 
-struct EntityDescriptor<Entity, EntityObject: Object> {
-    let primaryKey: String?
-    let sortDescriptors: [SortDescriptor]
-    let predicate: NSPredicate?
-    let transformer: ((Results<EntityObject>) -> Entity)?
-    let reverseTransformer: ((Entity) -> EntityObject)?
+enum EntityDescriptor<Entity, EntityObject: Object> {
+    case createOrUpdate(reverseTransformer: (Entity) -> EntityObject)
+    case fetch(predicate: NSPredicate?, sortDescriptors: [SortDescriptor], transformer: (Results<EntityObject>) -> Entity)
+    case delete(primaryKey: String)
 }
 
 extension EntityDescriptor {
-    init(sortDescriptors: [SortDescriptor], transformer: @escaping (Results<EntityObject>) -> Entity) {
-        self.primaryKey = nil
-        self.sortDescriptors = sortDescriptors
-        self.predicate = nil
-        self.transformer = transformer
-        self.reverseTransformer = nil
+    var reverseTransformer: ((Entity) -> EntityObject)? {
+        switch self {
+        case let .createOrUpdate(reverseTransformer):
+            return reverseTransformer
+        default:
+            return nil
+        }
     }
     
-    init(reverseTransformer: @escaping (Entity) -> EntityObject) {
-        self.primaryKey = nil
-        self.sortDescriptors = []
-        self.predicate = nil
-        self.transformer = nil
-        self.reverseTransformer = reverseTransformer
+    var predicate: NSPredicate? {
+        switch self {
+        case let .fetch(predicate, _, _):
+            return predicate
+        default:
+            return nil
+        }
     }
     
-    init(primaryKey: String) {
-        self.primaryKey = primaryKey
-        self.sortDescriptors = []
-        self.predicate = nil
-        self.transformer = nil
-        self.reverseTransformer = nil
+    var sortDescriptors: [SortDescriptor] {
+        switch self {
+        case let .fetch(_, sortDescriptors, _):
+            return sortDescriptors
+        default:
+            return []
+        }
+    }
+    
+    var transformer: ((Results<EntityObject>) -> Entity)? {
+        switch self {
+        case let .fetch(_, _, transformer):
+            return transformer
+        default:
+            return nil
+        }
+    }
+    
+    var primaryKey: String? {
+        switch self {
+        case let .delete(primaryKey):
+            return primaryKey
+        default:
+            return nil
+        }
     }
 }
 

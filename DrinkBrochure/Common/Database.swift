@@ -16,11 +16,12 @@ final class Database {
         self.realm = realm
     }
     
-    // TODO: Error handling
+    // TODO: Throw errors
     func createOrUpdate<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>, for entity: Entity) {
         guard let reverseTransformer = descriptor.reverseTransformer else {
-            fatalError("Reverse transformer is empty")
+            fatalError("Reverse transformer function should NOT be empty.")
         }
+        
         let object = reverseTransformer(entity)
         try! realm.write {
             realm.add(object, update: true)
@@ -38,7 +39,7 @@ final class Database {
         }
         
         guard let transformer = descriptor.transformer else {
-            fatalError("Transformer is empty")
+            fatalError("Transformer function should NOT be empty.")
         }
         
         return transformer(results)
@@ -46,7 +47,7 @@ final class Database {
     
     func delete<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>) {
         guard let primaryKey = descriptor.primaryKey else {
-            fatalError("Primary key is empty")
+            fatalError("Primary key should NOT be empty.")
         }
         
         let object = realm.object(ofType: EntityObject.self, forPrimaryKey: primaryKey)

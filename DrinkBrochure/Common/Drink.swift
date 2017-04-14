@@ -133,15 +133,11 @@ extension DrinkObject {
 
 // MARK: - Drink Descriptors
 extension Drink {
-    static let all = EntityDescriptor<[Drink], DrinkObject>(sortDescriptors: [SortDescriptor.createdAt]) { (results) -> [Drink] in
-        return results.map(Drink.init)
-    }
+    static let all: EntityDescriptor<[Drink], DrinkObject> = .fetch(predicate: nil, sortDescriptors: [SortDescriptor.createdAt], transformer: { $0.map(Drink.init) })
     
-    static let createOrUpdate = EntityDescriptor<Drink, DrinkObject> { (drink) -> DrinkObject in
-        return DrinkObject(drink: drink)
-    }
+    static let createOrUpdate: EntityDescriptor<Drink, DrinkObject> = .createOrUpdate(reverseTransformer: { DrinkObject(drink: $0) })
     
     var delete: EntityDescriptor<Drink, DrinkObject> {
-        return EntityDescriptor(primaryKey: drinkID)
+        return .delete(primaryKey: drinkID)
     }
 }
