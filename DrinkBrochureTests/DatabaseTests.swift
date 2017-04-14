@@ -19,7 +19,7 @@ class DatabaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "com.shenghuawu.DrinkBrochure.test"))
+        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "com.shenghuawu.DrinkBrochure"))
         database = Database(realm: realm)
     }
     

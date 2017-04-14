@@ -91,7 +91,7 @@ final class DrinkObject: Object {
 
 // MARK: - Drink Custom Initializer
 extension Drink {
-    // TODO: Perhaps throw error?
+    // TODO: Throw error?
     init(object: DrinkObject) {
         guard let rating = RatingScale(rawValue: object.rating) else {
             fatalError("Rating is invalid")

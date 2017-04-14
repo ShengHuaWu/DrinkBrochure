@@ -16,12 +16,12 @@ enum EntityDescriptor<Entity, EntityObject: Object> {
 }
 
 extension EntityDescriptor {
-    var reverseTransformer: ((Entity) -> EntityObject)? {
+    var reverseTransformer: (Entity) -> EntityObject {
         switch self {
         case let .createOrUpdate(reverseTransformer):
             return reverseTransformer
         default:
-            return nil
+            fatalError("fetch and delete do NOT have reverse transformer function.")
         }
     }
     
@@ -39,25 +39,25 @@ extension EntityDescriptor {
         case let .fetch(_, sortDescriptors, _):
             return sortDescriptors
         default:
-            return []
+            fatalError("createOrUpdate and delete do NOT have sort descriptors.")
         }
     }
     
-    var transformer: ((Results<EntityObject>) -> Entity)? {
+    var transformer: (Results<EntityObject>) -> Entity {
         switch self {
         case let .fetch(_, _, transformer):
             return transformer
         default:
-            return nil
+            fatalError("createOrUpdate and delete do NOT have tranformer function.")
         }
     }
     
-    var primaryKey: String? {
+    var primaryKey: String {
         switch self {
         case let .delete(primaryKey):
             return primaryKey
         default:
-            return nil
+            fatalError("createOrUpdate and fetch do NOT have primary key.")
         }
     }
 }
