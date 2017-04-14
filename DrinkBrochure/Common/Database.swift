@@ -43,4 +43,17 @@ final class Database {
         
         return transformer(results)
     }
+    
+    func delete<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>) {
+        guard let primaryKey = descriptor.primaryKey else {
+            fatalError("Primary key is empty")
+        }
+        
+        let object = realm.object(ofType: EntityObject.self, forPrimaryKey: primaryKey)
+        if let object = object {
+            try! realm.write {
+                realm.delete(object)
+            }
+        }
+    }
 }

@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 struct EntityDescriptor<Entity, EntityObject: Object> {
+    let primaryKey: String?
     let sortDescriptors: [SortDescriptor]
     let predicate: NSPredicate?
     let transformer: ((Results<EntityObject>) -> Entity)?
@@ -18,6 +19,7 @@ struct EntityDescriptor<Entity, EntityObject: Object> {
 
 extension EntityDescriptor {
     init(sortDescriptors: [SortDescriptor], transformer: @escaping (Results<EntityObject>) -> Entity) {
+        self.primaryKey = nil
         self.sortDescriptors = sortDescriptors
         self.predicate = nil
         self.transformer = transformer
@@ -25,10 +27,19 @@ extension EntityDescriptor {
     }
     
     init(reverseTransformer: @escaping (Entity) -> EntityObject) {
+        self.primaryKey = nil
         self.sortDescriptors = []
         self.predicate = nil
         self.transformer = nil
         self.reverseTransformer = reverseTransformer
+    }
+    
+    init(primaryKey: String) {
+        self.primaryKey = primaryKey
+        self.sortDescriptors = []
+        self.predicate = nil
+        self.transformer = nil
+        self.reverseTransformer = nil
     }
 }
 

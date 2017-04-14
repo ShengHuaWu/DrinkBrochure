@@ -120,7 +120,6 @@ extension DrinkObject {
     convenience init(drink: Drink) {
         self.init()
         
-        self.drinkID = drink.drinkID
         self.createdAt = drink.createdAt
         self.rating = drink.rating.rawValue
         self.latitude = drink.location.coordinate.latitude
@@ -140,5 +139,9 @@ extension Drink {
     
     static let createOrUpdate = EntityDescriptor<Drink, DrinkObject> { (drink) -> DrinkObject in
         return DrinkObject(drink: drink)
+    }
+    
+    var delete: EntityDescriptor<Drink, DrinkObject> {
+        return EntityDescriptor(primaryKey: drinkID)
     }
 }
