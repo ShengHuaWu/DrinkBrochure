@@ -45,4 +45,10 @@ final class Database {
             }
         }
     }
+    
+    func deleteAll() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
 }

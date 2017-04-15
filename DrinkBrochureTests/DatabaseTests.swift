@@ -24,32 +24,81 @@ class DatabaseTests: XCTestCase {
     }
     
     override func tearDown() {
+        database.deleteAll()
         database = nil
         
         super.tearDown()
     }
     
     // MAEK: - Enabled Tests
-    func testCreateAndDeleteDrink() {
+    func testDrinkCreation() {
         let beer = Drink.beer
+        
         database.createOrUpdate(with: Drink.createOrUpdate, for: beer)
         
-        var results = database.fetch(with: Drink.all)
-        XCTAssert(results.count == 1)
+        database.verifyDrinkCreation(newDrink: beer)
+    }
+    
+    func testDrinkDeletion() {
+        let wine = Drink.wine
+        database.createOrUpdate(with: Drink.createOrUpdate, for: wine)
+        let wineInDB = database.fetch(with: Drink.all).first!
+
+        database.delete(with: wineInDB.delete)
         
+        database.verifyDrinkDeletion()
+    }
+}
+
+// MARK: - Verify
+extension Database {
+    func verifyDrinkCreation(newDrink: Drink, file: StaticString = #file, line: UInt = #line) {
+        let results = fetch(with: Drink.all)
+        XCTAssertEqual(results.count, 1, "results count", file: file, line: line)
+
         let drinkInDB = results.first!
-        XCTAssert(drinkInDB.drinkID.characters.count > 0)
-        XCTAssert(drinkInDB.name == beer.name)
-        XCTAssert(drinkInDB.comment == beer.comment)
-        
-        database.delete(with: drinkInDB.delete)
-        
-        results = database.fetch(with: Drink.all)
-        XCTAssert(results.count == 0)
+        XCTAssert(drinkInDB.drinkID.characters.count > 0, "drink ID is empty", file: file, line: line)
+        XCTAssertEqual(drinkInDB.createdAt, newDrink.createdAt, "createdAt", file: file, line: line)
+        XCTAssertEqual(drinkInDB.rating, newDrink.rating, "rating", file: file, line: line)
+        XCTAssertEqual(drinkInDB.location.coordinate.latitude, newDrink.location.coordinate.latitude, "location latitude", file: file, line: line)
+        XCTAssertEqual(drinkInDB.location.coordinate.longitude, newDrink.location.coordinate.longitude, "location longitude", file: file, line: line)
+        XCTAssertEqual(drinkInDB.category, newDrink.category, "category", file: file, line: line)
+        XCTAssertEqual(drinkInDB.photoURL, newDrink.photoURL, "photo URL", file: file, line: line)
+        XCTAssertEqual(drinkInDB.name, newDrink.name, "name", file: file, line: line)
+        XCTAssertEqual(drinkInDB.comment, newDrink.comment, "comment", file: file, line: line)
+    }
+    
+    func verifyDrinkDeletion(file: StaticString = #file, line: UInt = #line) {
+        let results = fetch(with: Drink.all)
+        XCTAssertEqual(results.count, 0, "results count", file: file, line: line)
     }
 }
 
 // MARK: - Seed Data
 extension Drink {
-    static let beer = Drink(drinkID: "", createdAt: Date(), rating: .good, location: CLLocation(latitude: 0.0, longitude: 0.0), category: .beer, photoURL: URL(string: "https://developer.apple.com")!, name: "Good Beer", comment: "This is a beer")
+    static let beer = Drink(drinkID: "", createdAt: Date(), rating: .good, location: CLLocation(latitude: 0.0, longitude: 0.0), category: .beer, photoURL: URL(string: "https://developer.apple.com")!, name: "Good Beer", comment: "This is beer.")
+    static let wine = Drink(drinkID: "", createdAt: Date(), rating: .mediocre, location: CLLocation(latitude: 20.0, longitude: 100.0), category: .wine, photoURL: URL(string: "https://developer.apple.com")!, name: nil, comment: "This is wine.")
+    static let whiskey = Drink(drinkID: "", createdAt: Date(), rating: .notRecommended, location: CLLocation(latitude: 5.0, longitude: 70.0), category: .whiskey, photoURL: URL(string: "https://developer.apple.com")!, name: "Not Recommended", comment: "This is bad whiskey.")
+    static let sake = Drink(drinkID: "", createdAt: Date(), rating: .veryGood, location: CLLocation(latitude: 10.0, longitude: 30.0), category: .sake, photoURL: URL(string: "https://developer.apple.com")!, name: "Sake", comment: "This is very good.")
+    static let many = [beer, wine, whiskey, sake]
+}
+
+// MARK: - Drink Category Extension
+extension Drink.Category: Equatable {
+    public static func ==(lhs: Drink.Category, rhs: Drink.Category) -> Bool {
+        switch (lhs, rhs) {
+        case (.beer, .beer):
+            return true
+        case (.wine, .wine):
+            return true
+        case (.whiskey, .whiskey):
+            return true
+        case (.sake, .sake):
+            return true
+        case let (.other(leftName), .other(rightName)):
+            return leftName == rightName
+        default:
+            return false
+        }
+    }
 }
