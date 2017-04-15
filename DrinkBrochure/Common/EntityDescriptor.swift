@@ -33,7 +33,7 @@ extension EntityDescriptor {
         case let .fetch(predicate, _, _):
             return predicate
         default:
-            return nil
+            fatalError("createOrUpdate and delete do NOT have predicate.")
         }
     }
     
