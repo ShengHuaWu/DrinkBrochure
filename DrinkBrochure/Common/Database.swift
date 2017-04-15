@@ -16,7 +16,7 @@ final class Database {
         self.realm = realm
     }
     
-    // TODO: Throw errors
+    // TODO: Throw errors?
     func createOrUpdate<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>, for entity: Entity) {
         let object = descriptor.reverseTransformer(entity)
         try! realm.write {

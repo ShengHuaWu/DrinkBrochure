@@ -10,13 +10,16 @@ import Foundation
 import RealmSwift
 
 enum EntityDescriptor<Entity, EntityObject: Object> {
-    case createOrUpdate(reverseTransformer: (Entity) -> EntityObject)
-    case fetch(predicate: NSPredicate?, sortDescriptors: [SortDescriptor], transformer: (Results<EntityObject>) -> Entity)
+    typealias Transformer = (Results<EntityObject>) -> Entity
+    typealias ReverseTransformer = (Entity) -> EntityObject
+    
+    case createOrUpdate(reverseTransformer: ReverseTransformer)
+    case fetch(predicate: NSPredicate?, sortDescriptors: [SortDescriptor], transformer: Transformer)
     case delete(primaryKey: String)
 }
 
 extension EntityDescriptor {
-    var reverseTransformer: (Entity) -> EntityObject {
+    var reverseTransformer: ReverseTransformer {
         switch self {
         case let .createOrUpdate(reverseTransformer):
             return reverseTransformer
@@ -43,7 +46,7 @@ extension EntityDescriptor {
         }
     }
     
-    var transformer: (Results<EntityObject>) -> Entity {
+    var transformer: Transformer {
         switch self {
         case let .fetch(_, _, transformer):
             return transformer

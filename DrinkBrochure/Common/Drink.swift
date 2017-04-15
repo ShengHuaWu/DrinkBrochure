@@ -20,42 +20,12 @@ struct Drink {
         case outstanding
     }
     
-    enum Category: CustomStringConvertible {
+    enum Category {
         case beer
         case wine
         case whiskey
         case sake
         case other(name: String)
-        
-        var description: String {
-            switch self {
-            case .beer:
-                return "beer"
-            case .wine:
-                return "wine"
-            case .whiskey:
-                return "whiskey"
-            case .sake:
-                return "sake"
-            case let .other(name):
-                return name
-            }
-        }
-        
-        init(string: String) {
-            switch string {
-            case "beer":
-                self = .beer
-            case "wine":
-                self = .wine
-            case "whiskey":
-                self = .whiskey
-            case "sake":
-                self = .sake
-            default:
-                self = .other(name: string)
-            }
-        }
     }
     
     let drinkID: String
@@ -89,6 +59,39 @@ final class DrinkObject: Object {
     }
 }
 
+// MARK: - Drink Category Extension
+extension Drink.Category: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .beer:
+            return "beer"
+        case .wine:
+            return "wine"
+        case .whiskey:
+            return "whiskey"
+        case .sake:
+            return "sake"
+        case let .other(name):
+            return name
+        }
+    }
+    
+    init(name: String) {
+        switch name {
+        case "beer":
+            self = .beer
+        case "wine":
+            self = .wine
+        case "whiskey":
+            self = .whiskey
+        case "sake":
+            self = .sake
+        default:
+            self = .other(name: name)
+        }
+    }
+}
+
 // MARK: - Drink Custom Initializer
 extension Drink {
     // TODO: Throw error?
@@ -98,7 +101,7 @@ extension Drink {
         }
         
         let location = CLLocation(latitude: object.latitude, longitude: object.longitude)
-        let category = Category(string: object.category)
+        let category = Category(name: object.category)
         
         guard let url = URL(string: object.photoURLString) else {
             fatalError("Photo URL is invalid")
@@ -119,6 +122,10 @@ extension Drink {
 extension DrinkObject {
     convenience init(drink: Drink) {
         self.init()
+        
+        if drink.drinkID.characters.count > 0 {
+            self.drinkID = drink.drinkID
+        }
         
         self.createdAt = drink.createdAt
         self.rating = drink.rating.rawValue
