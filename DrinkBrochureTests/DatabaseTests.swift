@@ -36,7 +36,7 @@ class DatabaseTests: XCTestCase {
         
         database.createOrUpdate(with: Drink.createOrUpdate, for: beer)
         
-        database.verifyDrinkCreation(newDrink: beer)
+        database.verifyDrinkCreationOrUpdating(newDrink: beer)
     }
     
     func testDrinkDeletion() {
@@ -48,11 +48,22 @@ class DatabaseTests: XCTestCase {
         
         database.verifyDrinkDeletion()
     }
+    
+    func testDrinkUpdating() {
+        let whiskey = Drink.whiskey
+        database.createOrUpdate(with: Drink.createOrUpdate, for: whiskey)
+        let whiskeyInDB = database.fetch(with: Drink.all).first!
+        
+        let newDrink = Drink(drinkID: whiskeyInDB.drinkID, createdAt: whiskeyInDB.createdAt, rating: .outstanding, location: whiskeyInDB.location, category: .other(name: "unknown"), photoURL: URL(string: "https://google.com")!, name: nil, comment: "Excellent!")
+        database.createOrUpdate(with: Drink.createOrUpdate, for: newDrink)
+        
+        database.verifyDrinkCreationOrUpdating(newDrink: newDrink)
+    }
 }
 
 // MARK: - Verify
 extension Database {
-    func verifyDrinkCreation(newDrink: Drink, file: StaticString = #file, line: UInt = #line) {
+    func verifyDrinkCreationOrUpdating(newDrink: Drink, file: StaticString = #file, line: UInt = #line) {
         let results = fetch(with: Drink.all)
         XCTAssertEqual(results.count, 1, "results count", file: file, line: line)
 
