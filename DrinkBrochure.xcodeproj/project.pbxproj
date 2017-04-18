@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B267B691E9F181E00A780CC /* EntityDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B681E9F181E00A780CC /* EntityDescriptor.swift */; };
 		9B267B701E9F253E00A780CC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B6F1E9F253E00A780CC /* Database.swift */; };
 		9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B711E9F295F00A780CC /* DatabaseTests.swift */; };
 		9B7C2A7C1EA5A38900F8D325 /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C2A7B1EA5A38900F8D325 /* DrinkObject.swift */; };
+		9B7C2A7E1EA5A49400F8D325 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C2A7D1EA5A49400F8D325 /* FetchRequest.swift */; };
 		9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */; };
 		9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */; };
 		9B8AE38E1E9DC31400A4D6C5 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */; };
@@ -32,11 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9B267B681E9F181E00A780CC /* EntityDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityDescriptor.swift; path = Common/EntityDescriptor.swift; sourceTree = "<group>"; };
 		9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrinkBrochureTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B267B6F1E9F253E00A780CC /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Common/Database.swift; sourceTree = "<group>"; };
 		9B267B711E9F295F00A780CC /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		9B7C2A7B1EA5A38900F8D325 /* DrinkObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkObject.swift; path = Common/DrinkObject.swift; sourceTree = "<group>"; };
+		9B7C2A7D1EA5A49400F8D325 /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchRequest.swift; path = Common/FetchRequest.swift; sourceTree = "<group>"; };
 		9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drink.swift; path = Common/Drink.swift; sourceTree = "<group>"; };
@@ -83,10 +83,10 @@
 		9B8AE38F1E9DC31C00A4D6C5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9B267B6F1E9F253E00A780CC /* Database.swift */,
 				9B8AE38D1E9DC31400A4D6C5 /* Drink.swift */,
 				9B7C2A7B1EA5A38900F8D325 /* DrinkObject.swift */,
-				9B267B681E9F181E00A780CC /* EntityDescriptor.swift */,
-				9B267B6F1E9F253E00A780CC /* Database.swift */,
+				9B7C2A7D1EA5A49400F8D325 /* FetchRequest.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -259,8 +259,8 @@
 			files = (
 				9BB9A1501E9DBAD900ABBC3D /* ViewController.swift in Sources */,
 				9B7C2A7C1EA5A38900F8D325 /* DrinkObject.swift in Sources */,
-				9B267B691E9F181E00A780CC /* EntityDescriptor.swift in Sources */,
 				9B8AE38E1E9DC31400A4D6C5 /* Drink.swift in Sources */,
+				9B7C2A7E1EA5A49400F8D325 /* FetchRequest.swift in Sources */,
 				9B267B701E9F253E00A780CC /* Database.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
 			);

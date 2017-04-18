@@ -17,28 +17,28 @@ final class Database {
     }
     
     // TODO: Throw errors?
-    func createOrUpdate<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>, for entity: Entity) {
-        let object = descriptor.reverseTransformer(entity)
+    func createOrUpdate<Model, RealmObject:Object>(model: Model, with reverseTransformer: (Model) -> RealmObject) {
+        let object = reverseTransformer(model)
         try! realm.write {
             realm.add(object, update: true)
         }
     }
     
-    func fetch<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>) -> Entity {
-        var results = realm.objects(EntityObject.self)
-        if let predicate = descriptor.predicate {
+    func fetch<Model, RealmObject>(with request: FetchRequest<Model, RealmObject>) -> Model {
+        var results = realm.objects(RealmObject.self)
+        if let predicate = request.predicate {
             results = results.filter(predicate)
         }
         
-        if descriptor.sortDescriptors.count > 0 {
-            results = results.sorted(by: descriptor.sortDescriptors)
+        if request.sortDescriptors.count > 0 {
+            results = results.sorted(by: request.sortDescriptors)
         }
         
-        return descriptor.transformer(results)
+        return request.transformer(results)
     }
     
-    func delete<Entity, EntityObject>(with descriptor: EntityDescriptor<Entity, EntityObject>) {
-        let object = realm.object(ofType: EntityObject.self, forPrimaryKey: descriptor.primaryKey)
+    func delete<RealmObject: Object>(type: RealmObject.Type, with primaryKey: String) {
+        let object = realm.object(ofType: type, forPrimaryKey: primaryKey)
         if let object = object {
             try! realm.write {
                 realm.delete(object)

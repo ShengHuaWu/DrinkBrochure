@@ -33,28 +33,28 @@ class DatabaseTests: XCTestCase {
     func testDrinkCreation() {
         let beer = Drink.beer
         
-        database.createOrUpdate(with: Drink.createOrUpdate, for: beer)
+        database.createOrUpdate(model: beer, with: DrinkObject.init)
         
         database.verifyDrinkCreationOrUpdating(newDrink: beer)
     }
     
     func testDrinkDeletion() {
         let wine = Drink.wine
-        database.createOrUpdate(with: Drink.createOrUpdate, for: wine)
+        database.createOrUpdate(model: wine, with: DrinkObject.init)
         let wineInDB = database.fetch(with: Drink.all).first!
 
-        database.delete(with: wineInDB.delete)
+        database.delete(type: DrinkObject.self, with: wineInDB.drinkID)
         
         database.verifyDrinkDeletion()
     }
     
     func testDrinkUpdating() {
         let whiskey = Drink.whiskey
-        database.createOrUpdate(with: Drink.createOrUpdate, for: whiskey)
+        database.createOrUpdate(model: whiskey, with: DrinkObject.init)
         let whiskeyInDB = database.fetch(with: Drink.all).first!
         
         let newDrink = Drink(drinkID: whiskeyInDB.drinkID, createdAt: whiskeyInDB.createdAt, rating: .outstanding, location: whiskeyInDB.location, category: .other(name: "unknown"), photoURL: URL(string: "https://google.com")!, name: nil, comment: "Excellent!")
-        database.createOrUpdate(with: Drink.createOrUpdate, for: newDrink)
+        database.createOrUpdate(model: newDrink, with: DrinkObject.init)
         
         database.verifyDrinkCreationOrUpdating(newDrink: newDrink)
     }
