@@ -68,3 +68,14 @@ extension EntityDescriptor {
 extension SortDescriptor {
     static let createdAt = SortDescriptor(keyPath: "createdAt", ascending: false)
 }
+
+// MARK: - Drink Descriptors
+extension Drink {
+    static let all: EntityDescriptor<[Drink], DrinkObject> = .fetch(predicate: nil, sortDescriptors: [SortDescriptor.createdAt], transformer: { $0.map(Drink.init) })
+    
+    static let createOrUpdate: EntityDescriptor<Drink, DrinkObject> = .createOrUpdate(reverseTransformer: DrinkObject.init)
+    
+    var delete: EntityDescriptor<Drink, DrinkObject> {
+        return .delete(primaryKey: drinkID)
+    }
+}
