@@ -10,6 +10,8 @@
 		9B267B701E9F253E00A780CC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B6F1E9F253E00A780CC /* Database.swift */; };
 		9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B711E9F295F00A780CC /* DatabaseTests.swift */; };
 		9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */; };
+		9B4C1FE71EA70FC600FFD36D /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */; };
+		9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */; };
 		9B7C2A7C1EA5A38900F8D325 /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C2A7B1EA5A38900F8D325 /* DrinkObject.swift */; };
 		9B7C2A7E1EA5A49400F8D325 /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C2A7D1EA5A49400F8D325 /* FetchRequest.swift */; };
 		9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */; };
@@ -36,6 +38,8 @@
 		9B267B6F1E9F253E00A780CC /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Common/Database.swift; sourceTree = "<group>"; };
 		9B267B711E9F295F00A780CC /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
 		9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkListViewController.swift; path = DrinkList/DrinkListViewController.swift; sourceTree = "<group>"; };
+		9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
+		9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkListViewControllerTests.swift; sourceTree = "<group>"; };
 		9B7C2A7B1EA5A38900F8D325 /* DrinkObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkObject.swift; path = Common/DrinkObject.swift; sourceTree = "<group>"; };
 		9B7C2A7D1EA5A49400F8D325 /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchRequest.swift; path = Common/FetchRequest.swift; sourceTree = "<group>"; };
 		9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B4C1FE71EA70FC600FFD36D /* FBSnapshotTestCase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,7 @@
 		9B8AE3861E9DBFE400A4D6C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */,
 				9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */,
 				9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */,
 			);
@@ -138,6 +144,7 @@
 				9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */,
 				9B267B711E9F295F00A780CC /* DatabaseTests.swift */,
 				9BC2A9211EA2173A00486BA9 /* Helpers.swift */,
+				9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */,
 			);
 			path = DrinkBrochureTests;
 			sourceTree = "<group>";
@@ -170,6 +177,7 @@
 				9BB9A15A1E9DBADA00ABBC3D /* Sources */,
 				9BB9A15B1E9DBADA00ABBC3D /* Frameworks */,
 				9BB9A15C1E9DBADA00ABBC3D /* Resources */,
+				9B4C1FE81EA70FE100FFD36D /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -242,6 +250,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9B4C1FE81EA70FE100FFD36D /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FBSnapshotTestCase.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		9B8AE38C1E9DBFFF00A4D6C5 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +303,7 @@
 			files = (
 				9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */,
 				9BC2A9221EA2173A00486BA9 /* Helpers.swift in Sources */,
+				9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +460,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DrinkBrochureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.DrinkBrochureTests;
@@ -454,7 +481,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = DrinkBrochureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shenghuawu.DrinkBrochureTests;
