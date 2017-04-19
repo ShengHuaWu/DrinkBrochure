@@ -58,6 +58,30 @@ class DatabaseTests: XCTestCase {
         
         database.verifyDrinkCreationOrUpdating(newDrink: newDrink)
     }
+    
+    func testDrinkFetchingWithName() {
+        Drink.many.forEach { database.createOrUpdate(model: $0, with: DrinkObject.init) }
+        
+        let results = database.fetch(with: Drink.name("sa"))
+        
+        database.verifyDrinkFetching(results: results, expectedDrink: Drink.sake)
+    }
+    
+    func testDrinkFetchingWithRating() {
+        Drink.many.forEach { database.createOrUpdate(model: $0, with: DrinkObject.init) }
+
+        let results = database.fetch(with: Drink.rating(.mediocre))
+        
+        database.verifyDrinkFetching(results: results, expectedDrink: Drink.wine)
+    }
+    
+    func testDrinkFetchingWithCategory() {
+        Drink.many.forEach { database.createOrUpdate(model: $0, with: DrinkObject.init) }
+
+        let results = database.fetch(with: Drink.category(.whiskey))
+        
+        database.verifyDrinkFetching(results: results, expectedDrink: Drink.whiskey)
+    }
 }
 
 // MARK: - Verify
@@ -81,5 +105,20 @@ extension Database {
     func verifyDrinkDeletion(file: StaticString = #file, line: UInt = #line) {
         let results = fetch(with: Drink.all)
         XCTAssertEqual(results.count, 0, "results count", file: file, line: line)
+    }
+    
+    func verifyDrinkFetching(results: [Drink], expectedDrink: Drink, file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(results.count, 1, "results count", file: file, line: line)
+        
+        let drinkInDB = results.first!
+        XCTAssert(drinkInDB.drinkID.characters.count > 0, "drink ID is empty", file: file, line: line)
+        XCTAssertEqual(drinkInDB.createdAt, expectedDrink.createdAt, "createdAt", file: file, line: line)
+        XCTAssertEqual(drinkInDB.rating, expectedDrink.rating, "rating", file: file, line: line)
+        XCTAssertEqual(drinkInDB.location.coordinate.latitude, expectedDrink.location.coordinate.latitude, "location latitude", file: file, line: line)
+        XCTAssertEqual(drinkInDB.location.coordinate.longitude, expectedDrink.location.coordinate.longitude, "location longitude", file: file, line: line)
+        XCTAssertEqual(drinkInDB.category, expectedDrink.category, "category", file: file, line: line)
+        XCTAssertEqual(drinkInDB.photoURL, expectedDrink.photoURL, "photo URL", file: file, line: line)
+        XCTAssertEqual(drinkInDB.name, expectedDrink.name, "name", file: file, line: line)
+        XCTAssertEqual(drinkInDB.comment, expectedDrink.comment, "comment", file: file, line: line)
     }
 }
