@@ -18,7 +18,7 @@ class DrinkListViewControllerTests: FBSnapshotTestCase {
     }
     
     // MARK: - Enabled Tests
-    func testEmptyMode() {
+    func testEmptyMode() {        
         let drinkListVC = DrinkListViewController()
         
         drinkListVC.mode = .empty
@@ -26,7 +26,7 @@ class DrinkListViewControllerTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(drinkListVC.view)
     }
     
-    func testNormalMode() {
+    func testNormalMode() {        
         let drinkListVC = DrinkListViewController()
         
         drinkListVC.mode = .normal

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         let drinkListVC = DrinkListViewController()
-        drinkListVC.mode = .normal
+        drinkListVC.mode = .empty
         let navigationController = UINavigationController(rootViewController: drinkListVC)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
