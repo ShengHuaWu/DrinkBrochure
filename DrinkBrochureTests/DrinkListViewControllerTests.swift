@@ -26,7 +26,7 @@ class DrinkListViewControllerTests: FBSnapshotTestCase {
         FBSnapshotVerifyView(drinkListVC.view)
     }
     
-    func testNormalMode() {        
+    func testNormalMode() {
         let drinkListVC = DrinkListViewController()
         
         drinkListVC.mode = .normal
