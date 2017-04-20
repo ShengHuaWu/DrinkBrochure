@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B2123A61EA848F50059B4E0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2123A51EA848F50059B4E0 /* EmptyView.swift */; };
 		9B267B701E9F253E00A780CC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B6F1E9F253E00A780CC /* Database.swift */; };
 		9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B711E9F295F00A780CC /* DatabaseTests.swift */; };
 		9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B2123A51EA848F50059B4E0 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyView.swift; path = DrinkList/EmptyView.swift; sourceTree = "<group>"; };
 		9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrinkBrochureTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B267B6F1E9F253E00A780CC /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Common/Database.swift; sourceTree = "<group>"; };
 		9B267B711E9F295F00A780CC /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */,
+				9B2123A51EA848F50059B4E0 /* EmptyView.swift */,
 			);
 			name = DrinkList;
 			sourceTree = "<group>";
@@ -143,8 +146,8 @@
 				9BB9A1641E9DBADA00ABBC3D /* Info.plist */,
 				9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */,
 				9B267B711E9F295F00A780CC /* DatabaseTests.swift */,
-				9BC2A9211EA2173A00486BA9 /* Helpers.swift */,
 				9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */,
+				9BC2A9211EA2173A00486BA9 /* Helpers.swift */,
 			);
 			path = DrinkBrochureTests;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				9B7C2A7E1EA5A49400F8D325 /* FetchRequest.swift in Sources */,
 				9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */,
 				9B267B701E9F253E00A780CC /* Database.swift in Sources */,
+				9B2123A61EA848F50059B4E0 /* EmptyView.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,8 +24,8 @@ class DrinkListViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var emptyView: UIView = {
-        let view = UIView(frame: .zero)
+    private lazy var emptyView: EmptyView = {
+        let view = EmptyView(frame: .zero)
         view.backgroundColor = UIColor.lightGray
         return view
     }()
