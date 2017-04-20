@@ -20,6 +20,7 @@ class DrinkListViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.description())
+        collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         return collectionView
     }()
@@ -54,6 +55,14 @@ class DrinkListViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        let margin: CGFloat = 10.0
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+        // TODO: Change height to constant
+        layout.itemSize = CGSize(width: (view.bounds.width - margin * 3.0) / 2.0, height: 200.0)
+        layout.minimumInteritemSpacing = margin
+        layout.minimumLineSpacing = margin
+        
         collectionView.frame = view.bounds
         emptyView.frame = view.bounds
     }
@@ -62,13 +71,13 @@ class DrinkListViewController: UIViewController {
 // MARK: - Collection View Data Source
 extension DrinkListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.description(), for: indexPath)
         
-        cell.backgroundColor = UIColor.red
+        cell.backgroundColor = UIColor.brown
         
         return cell
     }

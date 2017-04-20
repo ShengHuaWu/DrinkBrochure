@@ -10,6 +10,7 @@ import UIKit
 
 class EmptyView: UIScrollView {
     // MARK: - Properties
+    // TODO: Remove background color and default text
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.backgroundColor = UIColor.brown
