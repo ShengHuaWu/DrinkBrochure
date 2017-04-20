@@ -19,7 +19,7 @@ class DrinkListViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.description())
+        collectionView.register(DrinkCell.self, forCellWithReuseIdentifier: DrinkCell.description())
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         return collectionView
@@ -75,10 +75,8 @@ extension DrinkListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.description(), for: indexPath)
-        
-        cell.backgroundColor = UIColor.brown
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrinkCell.description(), for: indexPath)
+                
         return cell
     }
 }

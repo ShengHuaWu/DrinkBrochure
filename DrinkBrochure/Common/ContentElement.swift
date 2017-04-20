@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Content Element
 enum ContentElement {
     case label(text: String)
     case image(image: UIImage)
@@ -38,6 +39,7 @@ extension ContentElement {
     }
 }
 
+// MARK: - Stack View Custom Initializer
 extension UIStackView {
     convenience init(elements: [ContentElement]) {
         self.init()
