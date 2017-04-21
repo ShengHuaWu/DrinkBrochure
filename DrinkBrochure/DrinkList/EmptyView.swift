@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyView: UIScrollView {
+class EmptyView: UIView {
     // MARK: - Properties
     private lazy var containerView: UIStackView = {
         let elements: [ContentElement] = [
@@ -36,7 +36,8 @@ class EmptyView: UIScrollView {
         super.layoutSubviews()
         
         let margin: CGFloat = 20.0
+        // TODO: Move status bar plus navigation bar height to constant
         let statusBarPlusNavigationBarHeight: CGFloat = 64.0
-        containerView.frame = CGRect(x: margin, y: statusBarPlusNavigationBarHeight + margin, width: frame.width - margin * 2.0, height: frame.height * 2.0 / 3.0)
+        containerView.frame = CGRect(x: margin, y: statusBarPlusNavigationBarHeight + margin, width: bounds.width - margin * 2.0, height: bounds.height * 2.0 / 3.0)
     }
 }
