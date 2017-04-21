@@ -22,6 +22,7 @@ class DrinkListViewController: UIViewController {
         collectionView.register(DrinkCell.self, forCellWithReuseIdentifier: DrinkCell.description())
         collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -48,6 +49,11 @@ class DrinkListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.white
+        
+        let drinkCreationItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(drinkCreationAction(sender:)))
+        navigationItem.rightBarButtonItem = drinkCreationItem
+        
         view.addSubview(collectionView)
         view.addSubview(emptyView)
     }
@@ -66,6 +72,13 @@ class DrinkListViewController: UIViewController {
         collectionView.frame = view.bounds
         emptyView.frame = view.bounds
     }
+    
+    // MARK: - Actions
+    func drinkCreationAction(sender: UIBarButtonItem) {
+        let drinkVC = DrinkViewController(mode: .creation)
+        let navigationController = UINavigationController(rootViewController: drinkVC)
+        present(navigationController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Collection View Data Source
@@ -78,5 +91,13 @@ extension DrinkListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrinkCell.description(), for: indexPath)
                 
         return cell
+    }
+}
+
+// MARK: - Collection View Delegate
+extension DrinkListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let drinkVC = DrinkViewController(mode: .presentation)
+        navigationController?.pushViewController(drinkVC, animated: true)
     }
 }

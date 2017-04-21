@@ -14,6 +14,8 @@ enum ContentElement {
     case label(text: String)
     case image(image: UIImage)
     case button(title: String)
+    case textField(text: String, placeholder: String)
+    case textView(text: String)
 }
 
 extension ContentElement {
@@ -22,8 +24,8 @@ extension ContentElement {
         switch self {
         case let .label(text):
             let label = UILabel()
-            label.backgroundColor = UIColor.brown
             label.text = text
+            label.backgroundColor = UIColor.brown
             return label
         case let .image(image):
             let imageView = UIImageView()
@@ -32,9 +34,19 @@ extension ContentElement {
             return imageView
         case let .button(title):
             let button = UIButton(type: .custom)
-            button.backgroundColor = UIColor.brown
             button.setTitle(title, for: .normal)
+            button.backgroundColor = UIColor.brown
             return button
+        case let .textField(text, placeholder):
+            let textField = UITextField()
+            textField.text = text
+            textField.placeholder = placeholder
+            textField.backgroundColor = UIColor.lightGray
+            return textField
+        case let .textView(text):
+            let textView = UITextView()
+            textView.text = text
+            return textView
         }
     }
 }
