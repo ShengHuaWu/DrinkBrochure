@@ -11,6 +11,7 @@ import RealmSwift
 
 final class Database {
     // MARK: - Private Properties
+    // TODO: Realm across threads?
     private let realm: Realm
     
     // MARK: - Designated Initializer
@@ -20,8 +21,8 @@ final class Database {
     
     // MARK: - Public Methods
     // TODO: Throw errors?
-    func createOrUpdate<Model, RealmObject:Object>(model: Model, with reverseTransformer: (Model) -> RealmObject) {
-        let object = reverseTransformer(model)
+    func createOrUpdate<Model, RealmObject:Object>(model: Model, with reverseTransform: (Model) -> RealmObject) {
+        let object = reverseTransform(model)
         try! realm.write {
             realm.add(object, update: true)
         }
@@ -37,7 +38,7 @@ final class Database {
             results = results.sorted(by: request.sortDescriptors)
         }
         
-        return request.transformer(results)
+        return request.transform(results)
     }
     
     func delete<RealmObject: Object>(type: RealmObject.Type, with primaryKey: String) {

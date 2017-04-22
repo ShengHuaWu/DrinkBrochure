@@ -13,7 +13,7 @@ import RealmSwift
 struct FetchRequest<Model, RealmObject: Object> {
     let predicate: NSPredicate?
     let sortDescriptors: [SortDescriptor]
-    let transformer: (Results<RealmObject>) -> Model
+    let transform: (Results<RealmObject>) -> Model
 }
 
 // MARK: - Sort Descriptor Extension
@@ -23,20 +23,20 @@ extension SortDescriptor {
 
 // MARK: - Drink Request
 extension Drink {
-    static let all = FetchRequest<[Drink], DrinkObject>(predicate: nil, sortDescriptors: [SortDescriptor.createdAt], transformer: { $0.map(Drink.init) })
+    static let all = FetchRequest<[Drink], DrinkObject>(predicate: nil, sortDescriptors: [SortDescriptor.createdAt], transform: { $0.map(Drink.init) })
     
     static func name(_ name: String) -> FetchRequest<[Drink], DrinkObject> {
         let predicate = NSPredicate(format: "name CONTAINS[cd] %@", name)
-        return FetchRequest(predicate: predicate, sortDescriptors: [SortDescriptor.createdAt], transformer: { $0.map(Drink.init) })
+        return FetchRequest(predicate: predicate, sortDescriptors: [SortDescriptor.createdAt], transform: { $0.map(Drink.init) })
     }
     
     static func rating(_ rating: RatingScale) -> FetchRequest<[Drink], DrinkObject> {
         let predicate = NSPredicate(format: "rating == %i", rating.rawValue)
-        return FetchRequest(predicate: predicate, sortDescriptors: [SortDescriptor.createdAt], transformer: { $0.map(Drink.init) })
+        return FetchRequest(predicate: predicate, sortDescriptors: [SortDescriptor.createdAt], transform: { $0.map(Drink.init) })
     }
     
     static func category(_ category: Category) -> FetchRequest<[Drink], DrinkObject> {
         let predicate = NSPredicate(format: "category == %@", category.description)
-        return FetchRequest(predicate: predicate, sortDescriptors: [SortDescriptor.createdAt], transformer: { $0.map(Drink.init) })
+        return FetchRequest(predicate: predicate, sortDescriptors: [SortDescriptor.createdAt], transform: { $0.map(Drink.init) })
     }
 }
