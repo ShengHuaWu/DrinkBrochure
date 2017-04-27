@@ -6,7 +6,6 @@
 //  Copyright © 2017 ShengHua Wu. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // MARK: - Content Element

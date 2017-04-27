@@ -24,7 +24,7 @@
 		9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE05D1EB17ECA00A59C0D /* Drink.swift */; };
 		9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE05E1EB17ECA00A59C0D /* DrinkObject.swift */; };
 		9BBDE0631EB17ECA00A59C0D /* FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE05F1EB17ECA00A59C0D /* FetchRequest.swift */; };
-		9BBDE0661EB17F4E00A59C0D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE0651EB17F4E00A59C0D /* Layout.swift */; };
+		9BBDE06B1EB1842F00A59C0D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE06A1EB1842F00A59C0D /* Layout.swift */; };
 		9BC2A9221EA2173A00486BA9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2A9211EA2173A00486BA9 /* Helpers.swift */; };
 		9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D51EA85A8E0092896B /* ContentElement.swift */; };
 		9BC426D81EA860380092896B /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D71EA860380092896B /* DrinkCell.swift */; };
@@ -63,7 +63,7 @@
 		9BBDE05D1EB17ECA00A59C0D /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drink.swift; path = Common/LocalStorage/Drink.swift; sourceTree = "<group>"; };
 		9BBDE05E1EB17ECA00A59C0D /* DrinkObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkObject.swift; path = Common/LocalStorage/DrinkObject.swift; sourceTree = "<group>"; };
 		9BBDE05F1EB17ECA00A59C0D /* FetchRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FetchRequest.swift; path = Common/LocalStorage/FetchRequest.swift; sourceTree = "<group>"; };
-		9BBDE0651EB17F4E00A59C0D /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Common/Layout/Layout.swift; sourceTree = "<group>"; };
+		9BBDE06A1EB1842F00A59C0D /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = Common/Layout.swift; sourceTree = "<group>"; };
 		9BC2A9211EA2173A00486BA9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9BC426D51EA85A8E0092896B /* ContentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentElement.swift; path = Common/ContentElement.swift; sourceTree = "<group>"; };
 		9BC426D71EA860380092896B /* DrinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkCell.swift; path = DrinkList/DrinkCell.swift; sourceTree = "<group>"; };
@@ -122,9 +122,9 @@
 		9B8AE38F1E9DC31C00A4D6C5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				9BBDE0671EB17F6200A59C0D /* Layout */,
 				9BBDE0641EB17ECE00A59C0D /* LocalStorage */,
 				9BC426D51EA85A8E0092896B /* ContentElement.swift */,
+				9BBDE06A1EB1842F00A59C0D /* Layout.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -184,14 +184,6 @@
 				9BBDE05F1EB17ECA00A59C0D /* FetchRequest.swift */,
 			);
 			name = LocalStorage;
-			sourceTree = "<group>";
-		};
-		9BBDE0671EB17F6200A59C0D /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				9BBDE0651EB17F4E00A59C0D /* Layout.swift */,
-			);
-			name = Layout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +330,7 @@
 				9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */,
 				9BC426D81EA860380092896B /* DrinkCell.swift in Sources */,
 				9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */,
-				9BBDE0661EB17F4E00A59C0D /* Layout.swift in Sources */,
+				9BBDE06B1EB1842F00A59C0D /* Layout.swift in Sources */,
 				9B2123A61EA848F50059B4E0 /* EmptyView.swift in Sources */,
 				9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
