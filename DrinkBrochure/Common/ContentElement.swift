@@ -15,6 +15,7 @@ enum ContentElement {
     case button(title: String)
     case textField(text: String, placeholder: String)
     case textView(text: String)
+    case rating
 }
 
 extension ContentElement {
@@ -46,6 +47,9 @@ extension ContentElement {
             let textView = UITextView()
             textView.text = text
             return textView
+        case .rating:
+            let view = RatingView()
+            return view
         }
     }
 }

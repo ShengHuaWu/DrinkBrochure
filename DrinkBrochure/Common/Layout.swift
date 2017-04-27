@@ -37,7 +37,7 @@ struct HorizontalLayout: Layout {
     func layout(in rect: CGRect) {
         let width = (rect.width - CGFloat(contents.count - 1) * spacing) / CGFloat(contents.count)
         for index in 0 ..< contents.count {
-            let frame = CGRect(x: rect.midX + CGFloat(index) * (width + spacing), y: rect.minY, width: width, height: rect.height)
+            let frame = CGRect(x: rect.minX + CGFloat(index) * (width + spacing), y: rect.minY, width: width, height: rect.height)
             contents[index].layout(in: frame)
         }
     }

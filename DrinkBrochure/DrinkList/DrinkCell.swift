@@ -14,7 +14,7 @@ class DrinkCell: UICollectionViewCell {
         let elements: [ContentElement] = [
             .image(image: UIImage()),
             .label(text: "Drink Name"),
-            .label(text: "rating")
+            .rating
         ]
         let view = UIStackView(elements: elements)
         return view
