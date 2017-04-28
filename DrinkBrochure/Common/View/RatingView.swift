@@ -46,8 +46,9 @@ final class RatingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let horizontalLayout = HorizontalLayout(contents: buttons, spacing: 8.0)
-        let composedLayout = InsetLayout(content: horizontalLayout, inset: UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0))
+        let spacing: CGFloat = 8.0
+        let horizontalLayout = HorizontalLayout(contents: buttons, spacing: spacing)
+        let composedLayout = InsetLayout(content: horizontalLayout, inset: UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing))
         composedLayout.layout(in: bounds)
     }
     
