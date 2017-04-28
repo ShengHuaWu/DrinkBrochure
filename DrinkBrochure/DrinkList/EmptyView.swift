@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyView: UIView {
+final class EmptyView: UIView {
     // MARK: - Properties
     private lazy var containerView: UIStackView = {
         let elements: [ContentElement] = [

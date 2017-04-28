@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkCell: UICollectionViewCell {
+final class DrinkCell: UICollectionViewCell {
     // MARK: - Properties
     private lazy var containerView: UIStackView = {
         let elements: [ContentElement] = [

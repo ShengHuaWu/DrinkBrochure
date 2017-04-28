@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkViewController: UIViewController {
+final class DrinkViewController: UIViewController {
     // MARK: - Mode
     enum Mode {
         case creation

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RatingView: UIView {
+final class RatingView: UIView {
     // MARK: - Properties
     private let numberOfButtons = 5
     private lazy var buttons: [RatingButton] = {

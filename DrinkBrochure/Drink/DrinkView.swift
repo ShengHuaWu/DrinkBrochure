@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkView: UIScrollView {
+final class DrinkView: UIScrollView {
     // MARK: - Properties
     private lazy var containerView: UIStackView = {
         let elements: [ContentElement] = [
