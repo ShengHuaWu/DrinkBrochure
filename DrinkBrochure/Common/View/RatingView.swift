@@ -53,8 +53,9 @@ final class RatingView: UIView {
     }
     
     // MARK: - Button Actions
-    func clickButtonAction(sender: RatingButton) {
-        guard let index = buttons.index(of: sender) else { return }
+    func clickButtonAction(sender: UIButton) {
+        guard let button = sender as? RatingButton,
+            let index = buttons.index(of: button) else { return }
         
         let endIndex = selectedIndices.contains(index) ? index - 1 : index
         selectedIndices = endIndex < 0 ? [] : Array(0 ... endIndex)
@@ -62,9 +63,10 @@ final class RatingView: UIView {
 }
 
 // MARK: - Rating Button
-final class RatingButton: UIButton {
+final private class RatingButton: UIButton {
     override open var isSelected: Bool {
         didSet {
+            // TODO: Change images for different states
             if isSelected {
                 backgroundColor = .yellow
             } else {
