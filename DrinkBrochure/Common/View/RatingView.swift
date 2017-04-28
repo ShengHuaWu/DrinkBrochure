@@ -16,12 +16,20 @@ final class RatingView: UIView {
         for _ in 0 ..< self.numberOfButtons {
             let button = RatingButton(type: .custom)
             button.backgroundColor = .brown
-            button.addTarget(self, action: #selector(selectButtonAction(sender:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(clickButtonAction(sender:)), for: .touchUpInside)
             buttons.append(button)
         }
         
         return buttons
     }()
+    
+    private var selectedIndices = [Int]() {
+        didSet {
+            for (button, index) in zip(buttons, 0 ..< buttons.count) {
+                button.isSelected = selectedIndices.contains(index)
+            }
+        }
+    }
     
     // MARK: - Designated Initializer
     override init(frame: CGRect) {
@@ -44,18 +52,11 @@ final class RatingView: UIView {
     }
     
     // MARK: - Button Actions
-    func selectButtonAction(sender: RatingButton) {
-        guard let selectedIndex = buttons.index(of: sender) else { return }
+    func clickButtonAction(sender: RatingButton) {
+        guard let index = buttons.index(of: sender) else { return }
         
-        sender.isSelected = !sender.isSelected
-        
-        zip(buttons, 0 ..< buttons.count ).forEach { (button, index) in
-            if index > selectedIndex {
-                button.isSelected = false
-            } else if index < selectedIndex, !button.isSelected {
-                button.isSelected = sender.isSelected
-            }
-        }
+        let endIndex = selectedIndices.contains(index) ? index - 1 : index
+        selectedIndices = endIndex < 0 ? [] : Array(0 ... endIndex)
     }
 }
 
