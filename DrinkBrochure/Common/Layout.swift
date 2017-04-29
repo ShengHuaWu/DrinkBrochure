@@ -36,9 +36,9 @@ struct HorizontalLayout: Layout {
     
     func layout(in rect: CGRect) {
         let width = (rect.width - CGFloat(contents.count - 1) * spacing) / CGFloat(contents.count)
-        for index in contents.indices {
-            let frame = CGRect(x: rect.minX + CGFloat(index) * (width + spacing), y: rect.minY, width: width, height: rect.height)
-            contents[index].layout(in: frame)
+        for (offset, content) in contents.enumerated() {
+            let frame = CGRect(x: rect.minX + CGFloat(offset) * (width + spacing), y: rect.minY, width: width, height: rect.height)
+            content.layout(in: frame)
         }
     }
 }
@@ -50,9 +50,9 @@ struct VerticalLayout: Layout {
     
     func layout(in rect: CGRect) {
         let height = (rect.height - CGFloat(contents.count - 1) * spacing) / CGFloat(contents.count)
-        for index in contents.indices {
-            let frame = CGRect(x: rect.minX, y: rect.minY + CGFloat(index) * (height + spacing), width: rect.width, height: height)
-            contents[index].layout(in: frame)
+        for (offset, content) in contents.enumerated() {
+            let frame = CGRect(x: rect.minX, y: rect.minY + CGFloat(offset) * (height + spacing), width: rect.width, height: height)
+            content.layout(in: frame)
         }
     }
 }
