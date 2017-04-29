@@ -30,6 +30,7 @@
 		9BC2A9221EA2173A00486BA9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2A9211EA2173A00486BA9 /* Helpers.swift */; };
 		9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D51EA85A8E0092896B /* ContentElement.swift */; };
 		9BC426D81EA860380092896B /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D71EA860380092896B /* DrinkCell.swift */; };
+		9BF24C301EB4378D00BA1359 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF24C2F1EB4378D00BA1359 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		9BC2A9211EA2173A00486BA9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9BC426D51EA85A8E0092896B /* ContentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentElement.swift; path = Common/ContentElement.swift; sourceTree = "<group>"; };
 		9BC426D71EA860380092896B /* DrinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkCell.swift; path = DrinkList/DrinkCell.swift; sourceTree = "<group>"; };
+		9BF24C2F1EB4378D00BA1359 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = Drink/ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				9B85F1991EA9990C00132ADF /* DrinkViewController.swift */,
 				9B85F19C1EA99A9600132ADF /* DrinkView.swift */,
+				9BF24C2F1EB4378D00BA1359 /* ImagePicker.swift */,
 			);
 			name = Drink;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				9BBDE0631EB17ECA00A59C0D /* FetchRequest.swift in Sources */,
 				9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */,
 				9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */,
+				9BF24C301EB4378D00BA1359 /* ImagePicker.swift in Sources */,
 				9BC426D81EA860380092896B /* DrinkCell.swift in Sources */,
 				9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */,
 				9BBDE06B1EB1842F00A59C0D /* Layout.swift in Sources */,
