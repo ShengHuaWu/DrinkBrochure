@@ -25,8 +25,8 @@ final class RatingView: UIView {
     
     private var selectedIndices = [Int]() {
         didSet {
-            for (button, index) in zip(buttons, 0 ..< buttons.count) {
-                button.isSelected = selectedIndices.contains(index)
+            for index in buttons.indices {
+                buttons[index].isSelected = selectedIndices.contains(index)
             }
         }
     }
