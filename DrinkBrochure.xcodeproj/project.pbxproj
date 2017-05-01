@@ -14,6 +14,8 @@
 		9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */; };
 		9B834DA81EB6D06E0089E256 /* MediaSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DA71EB6D06E0089E256 /* MediaSource.swift */; };
 		9B834DAA1EB6D5190089E256 /* MediaSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */; };
+		9B834DAC1EB6DDE30089E256 /* NotificationDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DAB1EB6DDE30089E256 /* NotificationDescriptor.swift */; };
+		9B834DAF1EB6DE2B0089E256 /* KeyboardPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DAE1EB6DE2B0089E256 /* KeyboardPayload.swift */; };
 		9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F1991EA9990C00132ADF /* DrinkViewController.swift */; };
 		9B85F19D1EA99A9600132ADF /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F19C1EA99A9600132ADF /* DrinkView.swift */; };
 		9B85F19F1EA9A33400132ADF /* DrinkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F19E1EA9A33400132ADF /* DrinkViewControllerTests.swift */; };
@@ -53,6 +55,8 @@
 		9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkListViewControllerTests.swift; sourceTree = "<group>"; };
 		9B834DA71EB6D06E0089E256 /* MediaSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaSource.swift; path = Drink/MediaSource.swift; sourceTree = "<group>"; };
 		9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSourceTests.swift; sourceTree = "<group>"; };
+		9B834DAB1EB6DDE30089E256 /* NotificationDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationDescriptor.swift; path = Common/Notification/NotificationDescriptor.swift; sourceTree = "<group>"; };
+		9B834DAE1EB6DE2B0089E256 /* KeyboardPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPayload.swift; path = Common/Notification/KeyboardPayload.swift; sourceTree = "<group>"; };
 		9B85F1991EA9990C00132ADF /* DrinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkViewController.swift; path = Drink/DrinkViewController.swift; sourceTree = "<group>"; };
 		9B85F19C1EA99A9600132ADF /* DrinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkView.swift; path = Drink/DrinkView.swift; sourceTree = "<group>"; };
 		9B85F19E1EA9A33400132ADF /* DrinkViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkViewControllerTests.swift; sourceTree = "<group>"; };
@@ -108,6 +112,15 @@
 			name = DrinkList;
 			sourceTree = "<group>";
 		};
+		9B834DAD1EB6DDE80089E256 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				9B834DAB1EB6DDE30089E256 /* NotificationDescriptor.swift */,
+				9B834DAE1EB6DE2B0089E256 /* KeyboardPayload.swift */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
 		9B85F19B1EA9991500132ADF /* Drink */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				9BBDE0641EB17ECE00A59C0D /* LocalStorage */,
+				9B834DAD1EB6DDE80089E256 /* Notification */,
 				9BBDE06E1EB1856300A59C0D /* View */,
 				9BC426D51EA85A8E0092896B /* ContentElement.swift */,
 				9BBDE06A1EB1842F00A59C0D /* Layout.swift */,
@@ -356,8 +370,10 @@
 				9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
 				9B834DA81EB6D06E0089E256 /* MediaSource.swift in Sources */,
+				9B834DAF1EB6DE2B0089E256 /* KeyboardPayload.swift in Sources */,
 				9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */,
 				9BBDE0601EB17ECA00A59C0D /* Database.swift in Sources */,
+				9B834DAC1EB6DDE30089E256 /* NotificationDescriptor.swift in Sources */,
 				9B85F19D1EA99A9600132ADF /* DrinkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
