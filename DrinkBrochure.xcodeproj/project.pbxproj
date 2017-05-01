@@ -12,6 +12,8 @@
 		9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */; };
 		9B4C1FE71EA70FC600FFD36D /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */; };
 		9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */; };
+		9B834DA81EB6D06E0089E256 /* MediaSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DA71EB6D06E0089E256 /* MediaSource.swift */; };
+		9B834DAA1EB6D5190089E256 /* MediaSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */; };
 		9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F1991EA9990C00132ADF /* DrinkViewController.swift */; };
 		9B85F19D1EA99A9600132ADF /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F19C1EA99A9600132ADF /* DrinkView.swift */; };
 		9B85F19F1EA9A33400132ADF /* DrinkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F19E1EA9A33400132ADF /* DrinkViewControllerTests.swift */; };
@@ -30,7 +32,6 @@
 		9BC2A9221EA2173A00486BA9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2A9211EA2173A00486BA9 /* Helpers.swift */; };
 		9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D51EA85A8E0092896B /* ContentElement.swift */; };
 		9BC426D81EA860380092896B /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D71EA860380092896B /* DrinkCell.swift */; };
-		9BF24C301EB4378D00BA1359 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF24C2F1EB4378D00BA1359 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,8 @@
 		9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkListViewController.swift; path = DrinkList/DrinkListViewController.swift; sourceTree = "<group>"; };
 		9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkListViewControllerTests.swift; sourceTree = "<group>"; };
+		9B834DA71EB6D06E0089E256 /* MediaSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaSource.swift; path = Drink/MediaSource.swift; sourceTree = "<group>"; };
+		9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSourceTests.swift; sourceTree = "<group>"; };
 		9B85F1991EA9990C00132ADF /* DrinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkViewController.swift; path = Drink/DrinkViewController.swift; sourceTree = "<group>"; };
 		9B85F19C1EA99A9600132ADF /* DrinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkView.swift; path = Drink/DrinkView.swift; sourceTree = "<group>"; };
 		9B85F19E1EA9A33400132ADF /* DrinkViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkViewControllerTests.swift; sourceTree = "<group>"; };
@@ -72,7 +75,6 @@
 		9BC2A9211EA2173A00486BA9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9BC426D51EA85A8E0092896B /* ContentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentElement.swift; path = Common/ContentElement.swift; sourceTree = "<group>"; };
 		9BC426D71EA860380092896B /* DrinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkCell.swift; path = DrinkList/DrinkCell.swift; sourceTree = "<group>"; };
-		9BF24C2F1EB4378D00BA1359 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = Drink/ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,7 @@
 			children = (
 				9B85F1991EA9990C00132ADF /* DrinkViewController.swift */,
 				9B85F19C1EA99A9600132ADF /* DrinkView.swift */,
-				9BF24C2F1EB4378D00BA1359 /* ImagePicker.swift */,
+				9B834DA71EB6D06E0089E256 /* MediaSource.swift */,
 			);
 			name = Drink;
 			sourceTree = "<group>";
@@ -180,6 +182,7 @@
 				9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */,
 				9BC2A9211EA2173A00486BA9 /* Helpers.swift */,
 				9BBDE06F1EB18A2B00A59C0D /* LayoutTests.swift */,
+				9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */,
 			);
 			path = DrinkBrochureTests;
 			sourceTree = "<group>";
@@ -345,7 +348,6 @@
 				9BBDE0631EB17ECA00A59C0D /* FetchRequest.swift in Sources */,
 				9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */,
 				9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */,
-				9BF24C301EB4378D00BA1359 /* ImagePicker.swift in Sources */,
 				9BC426D81EA860380092896B /* DrinkCell.swift in Sources */,
 				9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */,
 				9BBDE06B1EB1842F00A59C0D /* Layout.swift in Sources */,
@@ -353,6 +355,7 @@
 				9BBDE06D1EB1855F00A59C0D /* RatingView.swift in Sources */,
 				9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
+				9B834DA81EB6D06E0089E256 /* MediaSource.swift in Sources */,
 				9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */,
 				9BBDE0601EB17ECA00A59C0D /* Database.swift in Sources */,
 				9B85F19D1EA99A9600132ADF /* DrinkView.swift in Sources */,
@@ -368,6 +371,7 @@
 				9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */,
 				9BBDE0701EB18A2B00A59C0D /* LayoutTests.swift in Sources */,
 				9B85F19F1EA9A33400132ADF /* DrinkViewControllerTests.swift in Sources */,
+				9B834DAA1EB6D5190089E256 /* MediaSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
