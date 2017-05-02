@@ -14,8 +14,6 @@
 		9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */; };
 		9B4C1FE71EA70FC600FFD36D /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */; };
 		9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */; };
-		9B834DA81EB6D06E0089E256 /* MediaSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DA71EB6D06E0089E256 /* MediaSource.swift */; };
-		9B834DAA1EB6D5190089E256 /* MediaSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */; };
 		9B834DAC1EB6DDE30089E256 /* NotificationDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DAB1EB6DDE30089E256 /* NotificationDescriptor.swift */; };
 		9B834DAF1EB6DE2B0089E256 /* KeyboardPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B834DAE1EB6DE2B0089E256 /* KeyboardPayload.swift */; };
 		9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F1991EA9990C00132ADF /* DrinkViewController.swift */; };
@@ -26,6 +24,8 @@
 		9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */; };
 		9BB9A1551E9DBAD900ABBC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */; };
 		9BB9A1581E9DBAD900ABBC3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1561E9DBAD900ABBC3D /* LaunchScreen.storyboard */; };
+		9BBD6DE11EB85096000847CC /* ImagePickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6DE01EB85096000847CC /* ImagePickerConfiguration.swift */; };
+		9BBD6DE31EB8519F000847CC /* ImagePickerConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6DE21EB8519F000847CC /* ImagePickerConfigurationTests.swift */; };
 		9BBDE0601EB17ECA00A59C0D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE05C1EB17ECA00A59C0D /* Database.swift */; };
 		9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE05D1EB17ECA00A59C0D /* Drink.swift */; };
 		9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE05E1EB17ECA00A59C0D /* DrinkObject.swift */; };
@@ -57,8 +57,6 @@
 		9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkListViewController.swift; path = DrinkList/DrinkListViewController.swift; sourceTree = "<group>"; };
 		9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkListViewControllerTests.swift; sourceTree = "<group>"; };
-		9B834DA71EB6D06E0089E256 /* MediaSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaSource.swift; path = Drink/MediaSource.swift; sourceTree = "<group>"; };
-		9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSourceTests.swift; sourceTree = "<group>"; };
 		9B834DAB1EB6DDE30089E256 /* NotificationDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationDescriptor.swift; path = Common/Notification/NotificationDescriptor.swift; sourceTree = "<group>"; };
 		9B834DAE1EB6DE2B0089E256 /* KeyboardPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardPayload.swift; path = Common/Notification/KeyboardPayload.swift; sourceTree = "<group>"; };
 		9B85F1991EA9990C00132ADF /* DrinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkViewController.swift; path = Drink/DrinkViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		9BB9A1591E9DBAD900ABBC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB9A15E1E9DBADA00ABBC3D /* DrinkBrochureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinkBrochureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB9A1641E9DBADA00ABBC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BBD6DE01EB85096000847CC /* ImagePickerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerConfiguration.swift; path = Common/View/ImagePickerConfiguration.swift; sourceTree = "<group>"; };
+		9BBD6DE21EB8519F000847CC /* ImagePickerConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerConfigurationTests.swift; sourceTree = "<group>"; };
 		9BBDE05C1EB17ECA00A59C0D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = Common/LocalStorage/Database.swift; sourceTree = "<group>"; };
 		9BBDE05D1EB17ECA00A59C0D /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drink.swift; path = Common/LocalStorage/Drink.swift; sourceTree = "<group>"; };
 		9BBDE05E1EB17ECA00A59C0D /* DrinkObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkObject.swift; path = Common/LocalStorage/DrinkObject.swift; sourceTree = "<group>"; };
@@ -130,7 +130,6 @@
 			children = (
 				9B85F1991EA9990C00132ADF /* DrinkViewController.swift */,
 				9B85F19C1EA99A9600132ADF /* DrinkView.swift */,
-				9B834DA71EB6D06E0089E256 /* MediaSource.swift */,
 			);
 			name = Drink;
 			sourceTree = "<group>";
@@ -201,7 +200,7 @@
 				9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */,
 				9BC2A9211EA2173A00486BA9 /* Helpers.swift */,
 				9BBDE06F1EB18A2B00A59C0D /* LayoutTests.swift */,
-				9B834DA91EB6D5190089E256 /* MediaSourceTests.swift */,
+				9BBD6DE21EB8519F000847CC /* ImagePickerConfigurationTests.swift */,
 			);
 			path = DrinkBrochureTests;
 			sourceTree = "<group>";
@@ -222,6 +221,7 @@
 			children = (
 				9BBDE06C1EB1855F00A59C0D /* RatingView.swift */,
 				9B4C17851EB816CF00774D1B /* UIAlertController+Helpers.swift */,
+				9BBD6DE01EB85096000847CC /* ImagePickerConfiguration.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -366,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BBD6DE11EB85096000847CC /* ImagePickerConfiguration.swift in Sources */,
 				9BBDE0631EB17ECA00A59C0D /* FetchRequest.swift in Sources */,
 				9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */,
 				9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */,
@@ -376,7 +377,6 @@
 				9BBDE06D1EB1855F00A59C0D /* RatingView.swift in Sources */,
 				9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
-				9B834DA81EB6D06E0089E256 /* MediaSource.swift in Sources */,
 				9B834DAF1EB6DE2B0089E256 /* KeyboardPayload.swift in Sources */,
 				9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */,
 				9BBDE0601EB17ECA00A59C0D /* Database.swift in Sources */,
@@ -393,9 +393,9 @@
 				9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */,
 				9BC2A9221EA2173A00486BA9 /* Helpers.swift in Sources */,
 				9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */,
+				9BBD6DE31EB8519F000847CC /* ImagePickerConfigurationTests.swift in Sources */,
 				9BBDE0701EB18A2B00A59C0D /* LayoutTests.swift in Sources */,
 				9B85F19F1EA9A33400132ADF /* DrinkViewControllerTests.swift in Sources */,
-				9B834DAA1EB6D5190089E256 /* MediaSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
