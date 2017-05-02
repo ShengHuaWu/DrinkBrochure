@@ -14,22 +14,12 @@ class MediaSourceTests: XCTestCase {
     func testCameraImagePicker() {
         let source = UIViewController.cameraImage
         
-        XCTAssertNil(source.imagePicker)
+        XCTAssertFalse(source.validate())
     }
     
     func testPhotoLibraryImagePicker() {
         let source = UIViewController.photoLibraryImage
         
-        let imagePicker = source.imagePicker
-        
-        imagePicker!.verify(sourceType: source.sourceType, mediaTypes: source.mediaTypes)
-    }
-}
-
-extension UIImagePickerController {
-    func verify(sourceType: UIImagePickerControllerSourceType, mediaTypes: [String], file: StaticString = #file, line: UInt = #line) {
-        XCTAssertEqual(self.sourceType, sourceType, "source type", file: file, line: line)
-        XCTAssertEqual(self.mediaTypes, mediaTypes, "media types", file: file, line: line)
-        XCTAssertEqual(self.allowsEditing, true, "allows editing", file: file, line: line)
+        XCTAssert(source.validate())
     }
 }

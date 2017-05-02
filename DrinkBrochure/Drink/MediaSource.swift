@@ -14,18 +14,7 @@ struct MediaSource {
     let sourceType: UIImagePickerControllerSourceType
     let mediaTypes: [String]
     
-    var imagePicker: UIImagePickerController? {
-        if !validate() { return nil }
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = sourceType
-        imagePicker.mediaTypes = mediaTypes
-        imagePicker.allowsEditing = true
-        
-        return imagePicker
-    }
-    
-    private func validate() -> Bool {
+    func validate() -> Bool {
         guard UIImagePickerController.isSourceTypeAvailable(sourceType),
             let availableMediaTypes = UIImagePickerController.availableMediaTypes(for: sourceType) else {
                 return false
@@ -38,6 +27,19 @@ struct MediaSource {
         }
         
         return true
+    }
+}
+
+// MARK: - Image Picker Controller Extension
+extension UIImagePickerController {
+    convenience init?(mediaSource: MediaSource) {
+        guard mediaSource.validate() else { return nil }
+        
+        self.init()
+    
+        sourceType = mediaSource.sourceType
+        mediaTypes = mediaSource.mediaTypes
+        allowsEditing = true
     }
 }
 
