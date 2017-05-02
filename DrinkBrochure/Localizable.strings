@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  DrinkBrochure
+
+  Created by ShengHua Wu on 02/05/2017.
+  Copyright © 2017 ShengHua Wu. All rights reserved.
+*/
+
+// Drink
+"drink.action-sheet.image-picker" = "Choose An Image From";
+"drink.action-sheet.cancel" = "Cancel";
+"drink.action-sheet.camera" = "Camera";
+"drink.action-sheet.photo-library" = "Photo Library";
