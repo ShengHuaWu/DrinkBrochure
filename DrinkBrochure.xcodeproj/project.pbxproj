@@ -219,9 +219,9 @@
 		9BBDE06E1EB1856300A59C0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9BBD6DE01EB85096000847CC /* ImagePickerConfiguration.swift */,
 				9BBDE06C1EB1855F00A59C0D /* RatingView.swift */,
 				9B4C17851EB816CF00774D1B /* UIAlertController+Helpers.swift */,
-				9BBD6DE01EB85096000847CC /* ImagePickerConfiguration.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
