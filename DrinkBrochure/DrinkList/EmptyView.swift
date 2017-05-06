@@ -10,21 +10,31 @@ import UIKit
 
 final class EmptyView: UIView {
     // MARK: - Properties
-    private lazy var containerView: UIStackView = {
-        let elements: [ContentElement] = [
-            .image(image: UIImage()),
-            .label(text: "This is a label"),
-            .button(title: "Add a new Drink")
-        ]
-        let view = UIStackView(elements: elements)
-        return view
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .brown
+        return imageView
+    }()
+    
+    private lazy var textLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .brown
+        return label
+    }()
+
+    private lazy var addButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .brown
+        return button
     }()
     
     // MARK: - Designated Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(containerView)
+        addSubview(imageView)
+        addSubview(textLabel)
+        addSubview(addButton)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,9 +45,15 @@ final class EmptyView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let margin: CGFloat = 20.0
-        // TODO: Move status bar plus navigation bar height to constant
+        let interval: CGFloat = 8.0
+        let bottomLayout = VerticalLayout(contents: [textLabel, addButton], spacing: interval)
+        let verticalLayout = VerticalLayout(contents: [imageView, bottomLayout], spacing: interval)
+        
+        let horizontalMargin: CGFloat = 16.0
+        let height: CGFloat = 400.0
         let statusBarPlusNavigationBarHeight: CGFloat = 64.0
-        containerView.frame = CGRect(x: margin, y: statusBarPlusNavigationBarHeight + margin, width: bounds.width - margin * 2.0, height: bounds.height * 2.0 / 3.0)
+        let verticalMargin: CGFloat = (bounds.height - statusBarPlusNavigationBarHeight - height) / 2.0
+        let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: verticalMargin, left: horizontalMargin, bottom: verticalMargin, right: horizontalMargin))
+        composedLayout.layout(in: CGRect(x: bounds.minX, y: bounds.minY + statusBarPlusNavigationBarHeight, width: bounds.width, height: bounds.height - statusBarPlusNavigationBarHeight))
     }
 }
