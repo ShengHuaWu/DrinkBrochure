@@ -10,13 +10,20 @@ import UIKit
 
 final class DrinkCell: UICollectionViewCell {
     // MARK: - Properties
-    private lazy var containerView: UIStackView = {
-        let elements: [ContentElement] = [
-            .image(image: UIImage()),
-            .label(text: "Drink Name"),
-            .rating
-        ]
-        let view = UIStackView(elements: elements)
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .brown
+        return imageView
+    }()
+    
+    private lazy var categoryLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .brown
+        return label
+    }()
+    
+    private lazy var ratingView: RatingView = {
+        let view = RatingView(frame: .zero)
         return view
     }()
     
@@ -26,7 +33,9 @@ final class DrinkCell: UICollectionViewCell {
         
         backgroundColor = UIColor.lightGray
         
-        contentView.addSubview(containerView)
+        contentView.addSubview(imageView)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(ratingView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +46,10 @@ final class DrinkCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        containerView.frame = contentView.bounds
+        let interval: CGFloat = 8.0
+        let bottomLayout = VerticalLayout(contents: [categoryLabel, ratingView], spacing: interval)
+        let verticalLayout = VerticalLayout(contents: [imageView, bottomLayout], spacing: interval)
+        let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: interval, left: interval, bottom: interval, right: interval))
+        composedLayout.layout(in: bounds)
     }
 }
