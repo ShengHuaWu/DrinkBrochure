@@ -34,7 +34,6 @@
 		9BBDE06D1EB1855F00A59C0D /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE06C1EB1855F00A59C0D /* RatingView.swift */; };
 		9BBDE0701EB18A2B00A59C0D /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBDE06F1EB18A2B00A59C0D /* LayoutTests.swift */; };
 		9BC2A9221EA2173A00486BA9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC2A9211EA2173A00486BA9 /* Helpers.swift */; };
-		9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D51EA85A8E0092896B /* ContentElement.swift */; };
 		9BC426D81EA860380092896B /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC426D71EA860380092896B /* DrinkCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +80,6 @@
 		9BBDE06C1EB1855F00A59C0D /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RatingView.swift; path = Common/View/RatingView.swift; sourceTree = "<group>"; };
 		9BBDE06F1EB18A2B00A59C0D /* LayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTests.swift; sourceTree = "<group>"; };
 		9BC2A9211EA2173A00486BA9 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		9BC426D51EA85A8E0092896B /* ContentElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentElement.swift; path = Common/ContentElement.swift; sourceTree = "<group>"; };
 		9BC426D71EA860380092896B /* DrinkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkCell.swift; path = DrinkList/DrinkCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,7 +148,6 @@
 				9BBDE0641EB17ECE00A59C0D /* LocalStorage */,
 				9B834DAD1EB6DDE80089E256 /* Notification */,
 				9BBDE06E1EB1856300A59C0D /* View */,
-				9BC426D51EA85A8E0092896B /* ContentElement.swift */,
 				9BBDE06A1EB1842F00A59C0D /* Layout.swift */,
 			);
 			name = Common;
@@ -371,7 +368,6 @@
 				9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */,
 				9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */,
 				9BC426D81EA860380092896B /* DrinkCell.swift in Sources */,
-				9BC426D61EA85A8E0092896B /* ContentElement.swift in Sources */,
 				9BBDE06B1EB1842F00A59C0D /* Layout.swift in Sources */,
 				9B2123A61EA848F50059B4E0 /* EmptyView.swift in Sources */,
 				9BBDE06D1EB1855F00A59C0D /* RatingView.swift in Sources */,
