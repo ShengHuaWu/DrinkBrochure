@@ -45,9 +45,8 @@ final class EmptyView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let interval: CGFloat = 8.0
-        let bottomLayout = VerticalLayout(contents: [textLabel, addButton], spacing: interval, distribution: .equally)
-        let verticalLayout = VerticalLayout(contents: [imageView, bottomLayout], spacing: interval, distribution: .equally)
+        let spacing: CGFloat = 8.0
+        let verticalLayout = VerticalLayout(contents: [imageView, textLabel, addButton], spacing: spacing, distribution: .proportionally(resizedIndices: [1, 2], ratio: Distribution.Ratio(value: 0.2)))
         
         let horizontalMargin: CGFloat = 16.0
         let height: CGFloat = 400.0

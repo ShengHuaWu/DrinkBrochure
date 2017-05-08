@@ -65,17 +65,14 @@ final class DrinkView: UIScrollView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let interval: CGFloat = 8.0
-        let middleLayout = VerticalLayout(contents: [textField, categoryButton, ratingView], spacing: interval, distribution: .equally)
-        let verticalLayout = VerticalLayout(contents: [imageView, middleLayout, textView], spacing: interval, distribution: .equally)
+        let spacing: CGFloat = 8.0
+        let verticalLayout = VerticalLayout(contents: [imageView, textField, categoryButton, ratingView, textView, deleteButton], spacing: spacing, distribution: .proportionally(resizedIndices: [1, 2, 3, 5], ratio: Distribution.Ratio(value: 0.25)))
         
         let margin: CGFloat = 16.0
         let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: margin, left: margin, bottom: 0.0, right: margin))
         
         let height: CGFloat = 600.0
         composedLayout.layout(in: CGRect(x: 0.0, y: 0.0, width: frame.width, height: height))
-        
-        deleteButton.frame = CGRect(x: textView.frame.minX, y: textView.frame.maxY + interval, width: categoryButton.frame.width, height: categoryButton.frame.height)
         
         let bottomView = deleteButton.isHidden ? textView : deleteButton
         contentSize = CGSize(width: frame.width, height: bottomView.frame.maxY + margin)
