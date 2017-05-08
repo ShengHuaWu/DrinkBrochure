@@ -47,7 +47,7 @@ final class RatingView: UIView {
         super.layoutSubviews()
         
         let spacing: CGFloat = 8.0
-        let horizontalLayout = HorizontalLayout(contents: buttons, spacing: spacing)
+        let horizontalLayout = HorizontalLayout(contents: buttons, spacing: spacing, distribution: .equally)
         let composedLayout = InsetLayout(content: horizontalLayout, inset: UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing))
         composedLayout.layout(in: bounds)
     }

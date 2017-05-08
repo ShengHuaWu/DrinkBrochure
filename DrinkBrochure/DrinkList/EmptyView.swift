@@ -46,8 +46,8 @@ final class EmptyView: UIView {
         super.layoutSubviews()
         
         let interval: CGFloat = 8.0
-        let bottomLayout = VerticalLayout(contents: [textLabel, addButton], spacing: interval)
-        let verticalLayout = VerticalLayout(contents: [imageView, bottomLayout], spacing: interval)
+        let bottomLayout = VerticalLayout(contents: [textLabel, addButton], spacing: interval, distribution: .equally)
+        let verticalLayout = VerticalLayout(contents: [imageView, bottomLayout], spacing: interval, distribution: .equally)
         
         let horizontalMargin: CGFloat = 16.0
         let height: CGFloat = 400.0
