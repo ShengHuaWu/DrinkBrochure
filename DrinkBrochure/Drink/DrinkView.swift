@@ -66,7 +66,8 @@ final class DrinkView: UIScrollView {
         super.layoutSubviews()
         
         let spacing: CGFloat = 8.0
-        let verticalLayout = VerticalLayout(contents: [imageView, textField, categoryButton, ratingView, textView, deleteButton], spacing: spacing, distribution: .proportionally(resizedIndices: [1, 2, 3, 5], ratio: Distribution.Ratio(value: 0.25)))
+        let distribution = Distribution.proportionally(resizedIndices: [1, 2, 3, 5], ratio: Ratio(value: 0.25))
+        let verticalLayout = CascadingLayout(axis: .vertical, contents: [imageView, textField, categoryButton, ratingView, textView, deleteButton], spacing: spacing, distribution: distribution)
         
         let margin: CGFloat = 16.0
         let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: margin, left: margin, bottom: 0.0, right: margin))

@@ -29,18 +29,32 @@ struct InsetLayout: Layout {
     }
 }
 
-// MARK: - Distribution
-enum Distribution {
-    struct Ratio {
-        let value: CGFloat // Between 0 and 1
-        
-        init(value: CGFloat) {
-            precondition(value > 0.0 && value < 1.0, "Ratio value must be between zero and one.")
-            
-            self.value = value
+// MARK: - Axis
+enum Axis {
+    case horizontal
+    case vertical
+    
+    func standardEdge(of rect: CGRect) -> CGFloat {
+        switch self {
+        case .horizontal: return rect.width
+        case .vertical: return rect.height
         }
     }
+}
+
+// MARK: - Ratio
+struct Ratio {
+    let value: CGFloat // Between 0 and 1
     
+    init(value: CGFloat) {
+        precondition(value > 0.0 && value < 1.0, "Ratio value must be between zero and one.")
+        
+        self.value = value
+    }
+}
+
+// MARK: - Distribution
+enum Distribution {
     case equally
     case proportionally(resizedIndices: Set<Int>, ratio: Ratio)
     
@@ -56,97 +70,62 @@ enum Distribution {
     }
 }
 
-// MARK: - Distributable
-protocol Distributable {
-    var distribution: Distribution { get }
+// MARK: - Cascading Layout
+struct CascadingLayout: Layout {
+    let axis: Axis
+    let contents: [Layout]
+    let spacing: CGFloat
+    let distribution: Distribution
     
-    func setLayoutEqually(in rect: CGRect)
-    func setLayoutProportionally(in rect: CGRect, with resizedIndices: Set<Int>, ratio: Distribution.Ratio)
-}
-
-extension Layout where Self: Distributable {
+    init(axis: Axis, contents: [Layout], spacing: CGFloat, distribution: Distribution = .equally) {
+        guard distribution.validateIndices(in: contents.indices) else {
+            preconditionFailure("Resized indices are out of bound.")
+        }
+        
+        self.axis = axis
+        self.contents = contents
+        self.spacing = spacing
+        self.distribution = distribution
+    }
+    
     func layout(in rect: CGRect) {
+        let standard = standardValue(in: rect)
+        switch axis {
+        case .horizontal:
+            var minX = rect.minX
+            for (index, content) in zip(contents.indices, contents) {
+                let width = adjust(standard: standard, at: index)
+                let frame = CGRect(x: minX, y: rect.minY, width: width, height: rect.height)
+                content.layout(in: frame)
+                minX = frame.maxX + spacing
+            }
+        case .vertical:
+            var minY = rect.minY
+            for (index, content) in zip(contents.indices, contents) {
+                let height = adjust(standard: standard, at: index)
+                let frame = CGRect(x: rect.minX, y: minY, width: rect.width, height: height)
+                content.layout(in: frame)
+                minY = frame.maxY + spacing
+            }
+        }
+    }
+    
+    private func standardValue(in rect: CGRect) -> CGFloat {
+        let totalWidth = axis.standardEdge(of: rect) - CGFloat(contents.count - 1) * spacing
         switch distribution {
         case .equally:
-            setLayoutEqually(in: rect)
+            return totalWidth / CGFloat(contents.count)
         case let .proportionally(resizedIndices, ratio):
-            setLayoutProportionally(in: rect, with: resizedIndices, ratio: ratio)
-        }
-    }
-}
-
-// MARK: - Horizontal Layout
-struct HorizontalLayout: Layout, Distributable {
-    let contents: [Layout]
-    let spacing: CGFloat
-    let distribution: Distribution
-    
-    init(contents: [Layout], spacing: CGFloat, distribution: Distribution) {
-        guard distribution.validateIndices(in: contents.indices) else {
-            preconditionFailure("Resized indices are out of bound.")
-        }
-        
-        self.contents = contents
-        self.spacing = spacing
-        self.distribution = distribution
-    }
-    
-    func setLayoutEqually(in rect: CGRect) {
-        let totalWidth = rect.width - CGFloat(contents.count - 1) * spacing
-        let width = totalWidth / CGFloat(contents.count)
-        for (offset, content) in contents.enumerated() {
-            let frame = CGRect(x: rect.minX + CGFloat(offset) * (width + spacing), y: rect.minY, width: width, height: rect.height)
-            content.layout(in: frame)
+            return totalWidth / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
         }
     }
     
-    func setLayoutProportionally(in rect: CGRect, with resizedIndices: Set<Int>, ratio: Distribution.Ratio) {
-        let totalWidth = rect.width - CGFloat(contents.count - 1) * spacing
-        let standard = totalWidth / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
-        var minX = rect.minX
-        for (index, content) in zip(contents.indices, contents) {
-            let width = resizedIndices.contains(index) ? standard * ratio.value : standard
-            let frame = CGRect(x: minX, y: rect.minY, width: width, height: rect.height)
-            content.layout(in: frame)
-            minX = frame.maxX + spacing
-        }
-    }
-}
-
-// MAKR: - Vertical Layout
-struct VerticalLayout: Layout, Distributable {
-    let contents: [Layout]
-    let spacing: CGFloat
-    let distribution: Distribution
-    
-    init(contents: [Layout], spacing: CGFloat, distribution: Distribution) {
-        guard distribution.validateIndices(in: contents.indices) else {
-            preconditionFailure("Resized indices are out of bound.")
-        }
-        
-        self.contents = contents
-        self.spacing = spacing
-        self.distribution = distribution
-    }
-    
-    func setLayoutEqually(in rect: CGRect) {
-        let totalHeight = rect.height - CGFloat(contents.count - 1) * spacing
-        let height = totalHeight  / CGFloat(contents.count)
-        for (offset, content) in contents.enumerated() {
-            let frame = CGRect(x: rect.minX, y: rect.minY + CGFloat(offset) * (height + spacing), width: rect.width, height: height)
-            content.layout(in: frame)
-        }
-    }
-    
-    func setLayoutProportionally(in rect: CGRect, with resizedIndices: Set<Int>, ratio: Distribution.Ratio) {
-        let totalHeight = rect.height - CGFloat(contents.count - 1) * spacing
-        let standard = totalHeight / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
-        var minY = rect.minY
-        for (index, content) in zip(contents.indices, contents) {
-            let height = resizedIndices.contains(index) ? standard * ratio.value : standard
-            let frame = CGRect(x: rect.minX, y: minY, width: rect.width, height: height)
-            content.layout(in: frame)
-            minY = frame.maxY + spacing
+    private func adjust(standard: CGFloat, at index: Int) -> CGFloat {
+        switch distribution {
+        case .equally:
+            return standard
+        case let .proportionally(resizedIndices, ratio):
+            return resizedIndices.contains(index) ? standard * ratio.value : standard
         }
     }
 }

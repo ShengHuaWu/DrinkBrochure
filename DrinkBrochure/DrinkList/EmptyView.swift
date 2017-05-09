@@ -46,7 +46,8 @@ final class EmptyView: UIView {
         super.layoutSubviews()
         
         let spacing: CGFloat = 8.0
-        let verticalLayout = VerticalLayout(contents: [imageView, textLabel, addButton], spacing: spacing, distribution: .proportionally(resizedIndices: [1, 2], ratio: Distribution.Ratio(value: 0.2)))
+        let distribution = Distribution.proportionally(resizedIndices: [1, 2], ratio: Ratio(value: 0.2))
+        let verticalLayout = CascadingLayout(axis: .vertical, contents: [imageView, textLabel, addButton], spacing: spacing, distribution: distribution)
         
         let horizontalMargin: CGFloat = 16.0
         let height: CGFloat = 400.0

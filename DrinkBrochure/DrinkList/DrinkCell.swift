@@ -47,7 +47,8 @@ final class DrinkCell: UICollectionViewCell {
         super.layoutSubviews()
         
         let spacing: CGFloat = 8.0
-        let verticalLayout = VerticalLayout(contents: [imageView, categoryLabel, ratingView], spacing: spacing, distribution: .proportionally(resizedIndices: [1, 2], ratio: Distribution.Ratio(value: 0.4)))
+        let distribution = Distribution.proportionally(resizedIndices: [1, 2], ratio: Ratio(value: 0.4))
+        let verticalLayout = CascadingLayout(axis: .vertical, contents: [imageView, categoryLabel, ratingView], spacing: spacing, distribution: distribution)
         let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing))
         composedLayout.layout(in: bounds)
     }
