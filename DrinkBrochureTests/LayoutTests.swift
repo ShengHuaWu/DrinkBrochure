@@ -30,7 +30,7 @@ class LayoutTests: XCTestCase {
         let first = MockView()
         let second = MockView()
         let third = MockView()
-        let distribution = Distribution.proportionally(resizedIndices: [1], ratio: Ratio(value: 0.25))
+        let distribution = Distribution.proportionally(resizedIndices: [1], ratio: .quarter)
         let horizontalLayout = CascadingLayout(axis: .horizontal, contents: [first, second, third], spacing: 5.0, distribution: distribution)
         let composedLayout = InsetLayout(content: horizontalLayout, inset: UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
         
@@ -61,7 +61,7 @@ class LayoutTests: XCTestCase {
         let first = MockView()
         let second = MockView()
         let third = MockView()
-        let distribution = Distribution.proportionally(resizedIndices: [1], ratio: Ratio(value: 0.25))
+        let distribution = Distribution.proportionally(resizedIndices: [1], ratio: .quarter)
         let verticalLayout = CascadingLayout(axis: .vertical, contents: [first, second, third], spacing: 5.0, distribution: distribution)
         let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0))
         

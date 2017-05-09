@@ -44,6 +44,11 @@ enum Axis {
 
 // MARK: - Ratio
 struct Ratio {
+    static let half = Ratio(value: 0.5)
+    static let oneThird = Ratio(value: 1.0 / 3.0)
+    static let quarter = Ratio(value: 0.25)
+    static let oneFifth = Ratio(value: 0.2)
+    
     let value: CGFloat // Between 0 and 1
     
     init(value: CGFloat) {
@@ -94,7 +99,7 @@ struct CascadingLayout: Layout {
         case .horizontal:
             var minX = rect.minX
             for (index, content) in zip(contents.indices, contents) {
-                let width = adjust(standard: standard, at: index)
+                let width = adjust(standard: standard, for: index)
                 let frame = CGRect(x: minX, y: rect.minY, width: width, height: rect.height)
                 content.layout(in: frame)
                 minX = frame.maxX + spacing
@@ -102,7 +107,7 @@ struct CascadingLayout: Layout {
         case .vertical:
             var minY = rect.minY
             for (index, content) in zip(contents.indices, contents) {
-                let height = adjust(standard: standard, at: index)
+                let height = adjust(standard: standard, for: index)
                 let frame = CGRect(x: rect.minX, y: minY, width: rect.width, height: height)
                 content.layout(in: frame)
                 minY = frame.maxY + spacing
@@ -120,7 +125,7 @@ struct CascadingLayout: Layout {
         }
     }
     
-    private func adjust(standard: CGFloat, at index: Int) -> CGFloat {
+    private func adjust(standard: CGFloat, for index: Int) -> CGFloat {
         switch distribution {
         case .equally:
             return standard
