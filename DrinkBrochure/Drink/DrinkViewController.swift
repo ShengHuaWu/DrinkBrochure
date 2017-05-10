@@ -38,7 +38,7 @@ final class DrinkViewController: UIViewController {
         }
     }
     
-    var selectImageEnabled: Bool {
+    var isInteractionEnabled: Bool {
         switch mode {
         case .presentation: return false
         default: return true
@@ -69,17 +69,31 @@ final class DrinkViewController: UIViewController {
         view.addSubview(drinkView)
         
         drinkView.deleteButton.isHidden = !shouldShowDeleteButton
+        drinkView.textField.isUserInteractionEnabled = isInteractionEnabled
+        drinkView.textView.isUserInteractionEnabled = isInteractionEnabled
         
-        if selectImageEnabled {
+        if isInteractionEnabled {
             let tap = UITapGestureRecognizer(target: self, action: #selector(selectImageAction(sender:)))
             drinkView.imageView.addGestureRecognizer(tap)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        registerNotifications()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
         drinkView.frame = view.bounds
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        unregisterNotifications()
     }
     
     // MARK: - Actions
@@ -93,6 +107,27 @@ final class DrinkViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    private func registerNotifications() {
+        let center = NotificationCenter.default
+        center.addObserver(with: UIViewController.keyboardWillShow) { (payload) in
+            let contentInset = UIEdgeInsetsMake(0.0, 0.0, payload.endFrame.height, 0.0)
+            self.drinkView.contentInset = contentInset
+            self.drinkView.scrollIndicatorInsets = contentInset
+            self.drinkView.scrollRectToVisible(self.drinkView.textField.frame, animated: true)
+        }
+        center.addObserver(with: UIViewController.keyboardWillHide) { _ in
+            let contentInset = UIEdgeInsets.zero
+            self.drinkView.contentInset = contentInset
+            self.drinkView.scrollIndicatorInsets = contentInset
+        }
+    }
+    
+    private func unregisterNotifications() {
+        let center = NotificationCenter.default
+        center.removeObserver(self, name: UIViewController.keyboardWillShow.name, object: nil)
+        center.removeObserver(self, name: UIViewController.keyboardWillHide.name, object: nil)
+    }
+    
     private func presentCamera() {
         guard let imagePicker = UIImagePickerController(config: UIImagePickerController.cameraImage) else { return }
         
