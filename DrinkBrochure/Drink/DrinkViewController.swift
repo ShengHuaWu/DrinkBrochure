@@ -17,7 +17,7 @@ final class DrinkViewController: UIViewController {
     }
     
     // MARK: - Properties
-    private lazy var drinkView: DrinkView = {
+    fileprivate lazy var drinkView: DrinkView = {
         let view = DrinkView()
         return view
     }()
@@ -35,6 +35,13 @@ final class DrinkViewController: UIViewController {
         switch mode {
         case .editing: return true
         default: return false
+        }
+    }
+    
+    var selectImageEnabled: Bool {
+        switch mode {
+        case .presentation: return false
+        default: return true
         }
     }
     
@@ -63,9 +70,10 @@ final class DrinkViewController: UIViewController {
         
         drinkView.deleteButton.isHidden = !shouldShowDeleteButton
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(selectImageAction(sender:)))
-        drinkView.imageView.addGestureRecognizer(tap)
-        drinkView.imageView.isUserInteractionEnabled = true
+        if selectImageEnabled {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(selectImageAction(sender:)))
+            drinkView.imageView.addGestureRecognizer(tap)
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -106,7 +114,8 @@ extension DrinkViewController: UIImagePickerControllerDelegate, UINavigationCont
         guard let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         
         // TODO: Store image
-        print(editedImage.size)
+        drinkView.imageView.image = editedImage
+        
         picker.dismiss(animated: true, completion: nil)
     }
 }

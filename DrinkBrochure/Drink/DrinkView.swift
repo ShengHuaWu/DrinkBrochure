@@ -13,6 +13,7 @@ final class DrinkView: UIScrollView {
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .brown
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
