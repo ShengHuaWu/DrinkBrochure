@@ -10,36 +10,36 @@ import UIKit
 
 final class DrinkView: UIScrollView {
     // MARK: - Properties
-    private lazy var imageView: UIImageView = {
+    private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .brown
         return imageView
     }()
     
-    private lazy var textField: UITextField = {
+    private(set) lazy var textField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .brown
         return textField
     }()
     
-    private lazy var categoryButton: UIButton = {
+    private(set) lazy var categoryButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .brown
         return button
     }()
     
-    private lazy var ratingView: RatingView = {
+    private(set) lazy var ratingView: RatingView = {
         let view = RatingView(frame: .zero)
         return view
     }()
     
-    private lazy var textView: UITextView = {
+    private(set) lazy var textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .brown
         return textView
     }()
     
-    private lazy var deleteButton: UIButton = {
+    private(set) lazy var deleteButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .brown
         return button

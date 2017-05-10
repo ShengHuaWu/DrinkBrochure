@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		9B2123A61EA848F50059B4E0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2123A51EA848F50059B4E0 /* EmptyView.swift */; };
 		9B267B721E9F295F00A780CC /* DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267B711E9F295F00A780CC /* DatabaseTests.swift */; };
+		9B2D7AF41EC2B7E700AB19EB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B2D7AF61EC2B7E700AB19EB /* Localizable.strings */; };
+		9B2D7AF71EC2B7EE00AB19EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B2D7AF91EC2B7EE00AB19EB /* InfoPlist.strings */; };
 		9B4C17861EB816CF00774D1B /* UIAlertController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C17851EB816CF00774D1B /* UIAlertController+Helpers.swift */; };
-		9B4C178A1EB81B3F00774D1B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B4C17891EB81B3F00774D1B /* Localizable.strings */; };
 		9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */; };
 		9B4C1FE71EA70FC600FFD36D /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */; };
 		9B4C1FEA1EA710A600FFD36D /* DrinkListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */; };
@@ -51,8 +52,9 @@
 		9B2123A51EA848F50059B4E0 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyView.swift; path = DrinkList/EmptyView.swift; sourceTree = "<group>"; };
 		9B267B6A1E9F1C0000A780CC /* DrinkBrochureTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrinkBrochureTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9B267B711E9F295F00A780CC /* DatabaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTests.swift; sourceTree = "<group>"; };
+		9B2D7AF51EC2B7E700AB19EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B2D7AF81EC2B7EE00AB19EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B4C17851EB816CF00774D1B /* UIAlertController+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Helpers.swift"; path = "Common/View/UIAlertController+Helpers.swift"; sourceTree = "<group>"; };
-		9B4C17891EB81B3F00774D1B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkListViewController.swift; path = DrinkList/DrinkListViewController.swift; sourceTree = "<group>"; };
 		9B4C1FE61EA70FC600FFD36D /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSnapshotTestCase.framework; path = Carthage/Build/iOS/FBSnapshotTestCase.framework; sourceTree = "<group>"; };
 		9B4C1FE91EA710A600FFD36D /* DrinkListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -179,7 +181,8 @@
 				9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */,
 				9BB9A1561E9DBAD900ABBC3D /* LaunchScreen.storyboard */,
 				9BB9A1591E9DBAD900ABBC3D /* Info.plist */,
-				9B4C17891EB81B3F00774D1B /* Localizable.strings */,
+				9B2D7AF61EC2B7E700AB19EB /* Localizable.strings */,
+				9B2D7AF91EC2B7EE00AB19EB /* InfoPlist.strings */,
 				9B8AE38F1E9DC31C00A4D6C5 /* Common */,
 				9B85F19B1EA9991500132ADF /* Drink */,
 				9B4C1FE51EA7082200FFD36D /* DrinkList */,
@@ -310,7 +313,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BB9A1581E9DBAD900ABBC3D /* LaunchScreen.storyboard in Resources */,
-				9B4C178A1EB81B3F00774D1B /* Localizable.strings in Resources */,
+				9B2D7AF71EC2B7EE00AB19EB /* InfoPlist.strings in Resources */,
+				9B2D7AF41EC2B7E700AB19EB /* Localizable.strings in Resources */,
 				9BB9A1551E9DBAD900ABBC3D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +410,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9B2D7AF61EC2B7E700AB19EB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B2D7AF51EC2B7E700AB19EB /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9B2D7AF91EC2B7EE00AB19EB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B2D7AF81EC2B7EE00AB19EB /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		9BB9A1561E9DBAD900ABBC3D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
