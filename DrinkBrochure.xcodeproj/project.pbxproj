@@ -22,6 +22,7 @@
 		9B85F19F1EA9A33400132ADF /* DrinkViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B85F19E1EA9A33400132ADF /* DrinkViewControllerTests.swift */; };
 		9B8AE3891E9DBFE400A4D6C5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */; };
 		9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */; };
+		9BA081641EC3FF21004DC4F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA081631EC3FF21004DC4F7 /* Router.swift */; };
 		9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */; };
 		9BB9A1551E9DBAD900ABBC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */; };
 		9BB9A1581E9DBAD900ABBC3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1561E9DBAD900ABBC3D /* LaunchScreen.storyboard */; };
@@ -65,6 +66,7 @@
 		9B85F19E1EA9A33400132ADF /* DrinkViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkViewControllerTests.swift; sourceTree = "<group>"; };
 		9B8AE3871E9DBFE400A4D6C5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		9BA081631EC3FF21004DC4F7 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Common/Router.swift; sourceTree = "<group>"; };
 		9BB9A14A1E9DBAD900ABBC3D /* DrinkBrochure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkBrochure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				9B834DAD1EB6DDE80089E256 /* Notification */,
 				9BBDE06E1EB1856300A59C0D /* View */,
 				9BBDE06A1EB1842F00A59C0D /* Layout.swift */,
+				9BA081631EC3FF21004DC4F7 /* Router.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				9BBDE06D1EB1855F00A59C0D /* RatingView.swift in Sources */,
 				9BBDE0621EB17ECA00A59C0D /* DrinkObject.swift in Sources */,
 				9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */,
+				9BA081641EC3FF21004DC4F7 /* Router.swift in Sources */,
 				9B834DAF1EB6DE2B0089E256 /* KeyboardPayload.swift in Sources */,
 				9B85F19A1EA9990C00132ADF /* DrinkViewController.swift in Sources */,
 				9BBDE0601EB17ECA00A59C0D /* Database.swift in Sources */,

@@ -45,6 +45,10 @@ final class DrinkViewController: UIViewController {
         }
     }
     
+    var didSelectImage: (() -> ())?
+    var presentCamera: (() -> ())?
+    var presentPhotoLibrary: (() -> ())?
+    
     // MARK: - Designated Initializer
     init(mode: Mode) {
         self.mode = mode
@@ -102,8 +106,7 @@ final class DrinkViewController: UIViewController {
     }
     
     func selectImageAction(sender: UITapGestureRecognizer) {
-        let actionSheet = UIAlertController.makeImagePickerActionSheet(cameraHandler: presentCamera, photoLibraryHandler: presentPhotoLibrary)
-        present(actionSheet, animated: true, completion: nil)
+        didSelectImage?()
     }
     
     // MARK: - Private Methods
@@ -126,20 +129,6 @@ final class DrinkViewController: UIViewController {
         let center = NotificationCenter.default
         center.removeObserver(self, name: UIViewController.keyboardWillShow.name, object: nil)
         center.removeObserver(self, name: UIViewController.keyboardWillHide.name, object: nil)
-    }
-    
-    private func presentCamera() {
-        guard let imagePicker = UIImagePickerController(config: UIImagePickerController.cameraImage) else { return }
-        
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    private func presentPhotoLibrary() {
-        guard let imagePicker = UIImagePickerController(config: UIImagePickerController.photoLibraryImage) else { return }
-        
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
     }
 }
 

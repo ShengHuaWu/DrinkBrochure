@@ -45,7 +45,7 @@ final class DrinkListViewController: UIViewController {
         }
     }
     
-    var onCreate: (() -> ())?
+    var addDrink: (() -> ())?
     var didSelect: (() -> ())?
     
     // MARK: - View Life Cycle
@@ -78,7 +78,7 @@ final class DrinkListViewController: UIViewController {
     
     // MARK: - Actions
     func drinkCreationAction(sender: UIBarButtonItem) {
-        onCreate?()
+        addDrink?()
     }
 }
 
