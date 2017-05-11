@@ -15,7 +15,7 @@ final class DrinkListViewController: UIViewController {
         case normal
     }
     
-    // MARK: - Private Properties
+    // MARK: - Properties
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -44,6 +44,9 @@ final class DrinkListViewController: UIViewController {
             }
         }
     }
+    
+    var onCreate: (() -> ())?
+    var didSelect: (() -> ())?
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -75,9 +78,7 @@ final class DrinkListViewController: UIViewController {
     
     // MARK: - Actions
     func drinkCreationAction(sender: UIBarButtonItem) {
-        let drinkVC = DrinkViewController(mode: .creation)
-        let navigationController = UINavigationController(rootViewController: drinkVC)
-        present(navigationController, animated: true, completion: nil)
+        onCreate?()
     }
 }
 
@@ -97,7 +98,6 @@ extension DrinkListViewController: UICollectionViewDataSource {
 // MARK: - Collection View Delegate
 extension DrinkListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let drinkVC = DrinkViewController(mode: .presentation)
-        navigationController?.pushViewController(drinkVC, animated: true)
+        didSelect?()
     }
 }
