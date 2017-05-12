@@ -9,7 +9,7 @@
 import UIKit
 
 final class EmptyView: UIView {
-    // MARK: - Properties
+    // MARK: Properties
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .brown
@@ -28,7 +28,7 @@ final class EmptyView: UIView {
         return button
     }()
     
-    // MARK: - Designated Initializer
+    // MARK: Designated Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,7 +41,7 @@ final class EmptyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Layouts
+    // MARK: Layouts
     override func layoutSubviews() {
         super.layoutSubviews()
         

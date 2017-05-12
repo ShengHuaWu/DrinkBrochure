@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 
+// MARK: - Image Picker Controller Configuration
 extension UIImagePickerController {
     struct Configuration {
         let sourceType: UIImagePickerControllerSourceType

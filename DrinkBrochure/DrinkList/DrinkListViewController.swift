@@ -8,14 +8,15 @@
 
 import UIKit
 
+// MARK: - Drink List View Controller
 final class DrinkListViewController: UIViewController {
-    // MARK: - Mode
+    // MARK: Mode
     enum Mode {
         case empty
         case normal
     }
     
-    // MARK: - Properties
+    // MARK: Properties
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -48,7 +49,7 @@ final class DrinkListViewController: UIViewController {
     var addDrink: (() -> ())?
     var didSelect: (() -> ())?
     
-    // MARK: - View Life Cycle
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +77,7 @@ final class DrinkListViewController: UIViewController {
         emptyView.frame = view.bounds
     }
     
-    // MARK: - Actions
+    // MARK: Actions
     func drinkCreationAction(sender: UIBarButtonItem) {
         addDrink?()
     }

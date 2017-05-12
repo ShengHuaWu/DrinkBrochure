@@ -10,16 +10,16 @@ import Foundation
 import RealmSwift
 
 final class Database {
-    // MARK: - Private Properties
+    // MARK: Properties
     // TODO: Realm across threads?
     private let realm: Realm
     
-    // MARK: - Designated Initializer
+    // MARK: Designated Initializer
     init(realm: Realm = try! Realm()) {
         self.realm = realm
     }
     
-    // MARK: - Public Methods
+    // MARK: CRUD Methods
     // TODO: Throw errors?
     func createOrUpdate<Model, RealmObject:Object>(model: Model, with reverseTransform: (Model) -> RealmObject) {
         let object = reverseTransform(model)

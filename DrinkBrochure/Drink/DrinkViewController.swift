@@ -8,15 +8,16 @@
 
 import UIKit
 
+// MARK: - Drink View Controller
 final class DrinkViewController: UIViewController {
-    // MARK: - Mode
+    // MARK: Mode
     enum Mode {
         case creation
         case editing
         case presentation
     }
     
-    // MARK: - Properties
+    // MARK: Properties
     fileprivate lazy var drinkView: DrinkView = {
         let view = DrinkView()
         return view
@@ -49,7 +50,7 @@ final class DrinkViewController: UIViewController {
     var presentCamera: (() -> ())?
     var presentPhotoLibrary: (() -> ())?
     
-    // MARK: - Designated Initializer
+    // MARK: Designated Initializer
     init(mode: Mode) {
         self.mode = mode
         
@@ -60,7 +61,7 @@ final class DrinkViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - View Life Cycle
+    // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -100,7 +101,7 @@ final class DrinkViewController: UIViewController {
         unregisterNotifications()
     }
     
-    // MARK: - Actions
+    // MARK: Actions
     func cancelAction(sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -109,7 +110,7 @@ final class DrinkViewController: UIViewController {
         didSelectImage?()
     }
     
-    // MARK: - Private Methods
+    // MARK: Register & unregister notifications
     private func registerNotifications() {
         let center = NotificationCenter.default
         center.addObserver(with: UIViewController.keyboardWillShow) { (payload) in

@@ -9,7 +9,7 @@
 import UIKit
 
 final class DrinkView: UIScrollView {
-    // MARK: - Properties
+    // MARK: Properties
     private(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .brown
@@ -46,7 +46,7 @@ final class DrinkView: UIScrollView {
         return button
     }()
     
-    // MARK: - Designated Initializer
+    // MARK: Designated Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -62,7 +62,7 @@ final class DrinkView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Layouts
+    // MARK: Layouts
     override func layoutSubviews() {
         super.layoutSubviews()
         

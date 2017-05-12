@@ -8,8 +8,9 @@
 
 import UIKit
 
+// MARK: - Rating View
 final class RatingView: UIView {
-    // MARK: - Properties
+    // MARK: Properties
     private let numberOfButtons = 5
     private lazy var buttons: [RatingButton] = {
         var buttons = [RatingButton]()
@@ -31,7 +32,7 @@ final class RatingView: UIView {
         }
     }
     
-    // MARK: - Designated Initializer
+    // MARK: Designated Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -42,7 +43,7 @@ final class RatingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Layouts
+    // MARK: Layouts
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -52,7 +53,7 @@ final class RatingView: UIView {
         composedLayout.layout(in: bounds)
     }
     
-    // MARK: - Button Actions
+    // MARK: Button Actions
     func clickButtonAction(sender: UIButton) {
         guard let button = sender as? RatingButton,
             let index = buttons.index(of: button) else { return }
