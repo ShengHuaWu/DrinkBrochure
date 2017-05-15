@@ -71,10 +71,9 @@ final class DrinkView: UIScrollView {
         let verticalLayout = CascadingLayout(axis: .vertical, contents: [imageView, textField, categoryButton, ratingView, textView, deleteButton], spacing: spacing, distribution: distribution)
         
         let margin: CGFloat = 16.0
-        let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: margin, left: margin, bottom: 0.0, right: margin))
+        let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin))
         
-        let height: CGFloat = 600.0
-        composedLayout.layout(in: CGRect(x: 0.0, y: 0.0, width: frame.width, height: height))
+        composedLayout.layout(in: CGRect(x: 0.0, y: 0.0, width: frame.width, height: Geometry.drinkViewHeight))
         
         let bottomView = deleteButton.isHidden ? textView : deleteButton
         contentSize = CGSize(width: frame.width, height: bottomView.frame.maxY + margin)

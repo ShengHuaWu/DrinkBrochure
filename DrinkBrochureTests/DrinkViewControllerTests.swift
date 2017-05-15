@@ -23,4 +23,16 @@ class DrinkViewControllerTests: FBSnapshotTestCase {
         
         FBSnapshotVerifyView(drinkVC.view)
     }
+    
+    func testEditingMode() {
+        let drinkVC = DrinkViewController(mode: .editing)
+        
+        FBSnapshotVerifyView(drinkVC.view)
+    }
+    
+    func testPresentationMode() {
+        let drinkVC = DrinkViewController(mode: .presentation)
+        
+        FBSnapshotVerifyView(drinkVC.view)
+    }
 }

@@ -50,9 +50,8 @@ final class EmptyView: UIView {
         let verticalLayout = CascadingLayout(axis: .vertical, contents: [imageView, textLabel, addButton], spacing: spacing, distribution: distribution)
         
         let horizontalMargin: CGFloat = 16.0
-        let height: CGFloat = 400.0
-        let statusBarPlusNavigationBarHeight: CGFloat = 64.0
-        let verticalMargin: CGFloat = (bounds.height - statusBarPlusNavigationBarHeight - height) / 2.0
+        let statusBarPlusNavigationBarHeight = Geometry.statusBarHeight + Geometry.navigationBarHeight
+        let verticalMargin: CGFloat = (bounds.height - statusBarPlusNavigationBarHeight - Geometry.emptyViewContentHeight) / 2.0
         let composedLayout = InsetLayout(content: verticalLayout, inset: UIEdgeInsets(top: verticalMargin, left: horizontalMargin, bottom: verticalMargin, right: horizontalMargin))
         composedLayout.layout(in: CGRect(x: bounds.minX, y: bounds.minY + statusBarPlusNavigationBarHeight, width: bounds.width, height: bounds.height - statusBarPlusNavigationBarHeight))
     }

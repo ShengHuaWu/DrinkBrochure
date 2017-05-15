@@ -68,8 +68,7 @@ final class DrinkListViewController: UIViewController {
         let margin: CGFloat = 10.0
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-        // TODO: Change height to constant
-        layout.itemSize = CGSize(width: (view.bounds.width - margin * 3.0) / 2.0, height: 200.0)
+        layout.itemSize = CGSize(width: (view.bounds.width - margin * 3.0) / 2.0, height: Geometry.drinkListItemHeight)
         layout.minimumInteritemSpacing = margin
         layout.minimumLineSpacing = margin
         
