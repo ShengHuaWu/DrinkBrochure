@@ -20,29 +20,15 @@ final class DrinkViewController: UIViewController {
     // MARK: Properties
     fileprivate lazy var drinkView: DrinkView = {
         let view = DrinkView()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectImageAction(sender:)))
+        view.imageView.addGestureRecognizer(tap)
+        
         return view
     }()
     
-    let mode: Mode
-    
-    var shouldShowCancelItem: Bool {
-        switch mode {
-        case .presentation: return false
-        default: return true
-        }
-    }
-    
-    var shouldShowDeleteButton: Bool {
-        switch mode {
-        case .editing: return true
-        default: return false
-        }
-    }
-    
-    var isInteractionEnabled: Bool {
-        switch mode {
-        case .presentation: return false
-        default: return true
+    private var mode: Mode {
+        didSet {
+            configureDrinkView()
         }
     }
     
@@ -65,7 +51,7 @@ final class DrinkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if shouldShowCancelItem {
+        if case .creation = mode {
             let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(sender:)))
             navigationItem.leftBarButtonItem = cancelItem
         }
@@ -73,14 +59,7 @@ final class DrinkViewController: UIViewController {
         view.backgroundColor = UIColor.white
         view.addSubview(drinkView)
         
-        drinkView.deleteButton.isHidden = !shouldShowDeleteButton
-        drinkView.textField.isUserInteractionEnabled = isInteractionEnabled
-        drinkView.textView.isUserInteractionEnabled = isInteractionEnabled
-        
-        if isInteractionEnabled {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(selectImageAction(sender:)))
-            drinkView.imageView.addGestureRecognizer(tap)
-        }
+        configureDrinkView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,6 +109,29 @@ final class DrinkViewController: UIViewController {
         let center = NotificationCenter.default
         center.removeObserver(self, name: UIViewController.keyboardWillShow.name, object: nil)
         center.removeObserver(self, name: UIViewController.keyboardWillHide.name, object: nil)
+    }
+    
+    private func configureDrinkView() {
+        switch mode {
+        case .creation:
+            drinkView.deleteButton.isHidden = true
+            drinkView.imageView.isUserInteractionEnabled = true
+            drinkView.textField.isUserInteractionEnabled = true
+            drinkView.textView.isUserInteractionEnabled = true
+            drinkView.ratingView.isUserInteractionEnabled = true
+        case .editing:
+            drinkView.deleteButton.isHidden = false
+            drinkView.imageView.isUserInteractionEnabled = true
+            drinkView.textField.isUserInteractionEnabled = true
+            drinkView.textView.isUserInteractionEnabled = true
+            drinkView.ratingView.isUserInteractionEnabled = true
+        case .presentation:
+            drinkView.deleteButton.isHidden = true
+            drinkView.imageView.isUserInteractionEnabled = false
+            drinkView.textField.isUserInteractionEnabled = false
+            drinkView.textView.isUserInteractionEnabled = false
+            drinkView.ratingView.isUserInteractionEnabled = false
+        }
     }
 }
 
