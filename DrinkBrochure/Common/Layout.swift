@@ -99,7 +99,7 @@ struct CascadingLayout: Layout {
         case .horizontal:
             var minX = rect.minX
             for (index, content) in zip(contents.indices, contents) {
-                let width = adjust(standard: standard, for: index)
+                let width = adjust(standard: standard, at: index)
                 let frame = CGRect(x: minX, y: rect.minY, width: width, height: rect.height)
                 content.layout(in: frame)
                 minX = frame.maxX + spacing
@@ -107,7 +107,7 @@ struct CascadingLayout: Layout {
         case .vertical:
             var minY = rect.minY
             for (index, content) in zip(contents.indices, contents) {
-                let height = adjust(standard: standard, for: index)
+                let height = adjust(standard: standard, at: index)
                 let frame = CGRect(x: rect.minX, y: minY, width: rect.width, height: height)
                 content.layout(in: frame)
                 minY = frame.maxY + spacing
@@ -116,16 +116,16 @@ struct CascadingLayout: Layout {
     }
     
     private func standardValue(in rect: CGRect) -> CGFloat {
-        let totalWidth = axis.standardEdge(of: rect) - CGFloat(contents.count - 1) * spacing
+        let total = axis.standardEdge(of: rect) - CGFloat(contents.count - 1) * spacing
         switch distribution {
         case .equally:
-            return totalWidth / CGFloat(contents.count)
+            return total / CGFloat(contents.count)
         case let .proportionally(resizedIndices, ratio):
-            return totalWidth / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
+            return total / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
         }
     }
     
-    private func adjust(standard: CGFloat, for index: Int) -> CGFloat {
+    private func adjust(standard: CGFloat, at index: Int) -> CGFloat {
         switch distribution {
         case .equally:
             return standard
