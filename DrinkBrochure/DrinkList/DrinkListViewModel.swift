@@ -1,5 +1,5 @@
 //
-//  DrinkViewModel.swift
+//  DrinkListViewModel.swift
 //  DrinkBrochure
 //
 //  Created by ShengHua Wu on 27/05/2017.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-final class DrinkViewModel {
-    private(set) var state: DrinkState {
+final class DrinkListViewModel {
+    private(set) var state: DrinkListState {
         didSet {
             callback(state)
         }
     }
     
-    private let callback: (DrinkState) -> ()
+    private let callback: (DrinkListState) -> ()
     
-    init(state: DrinkState, callback: @escaping (DrinkState) -> ()) {
+    init(state: DrinkListState, callback: @escaping (DrinkListState) -> ()) {
         self.state = state
         self.callback = callback
         

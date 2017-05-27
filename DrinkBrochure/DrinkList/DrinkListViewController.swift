@@ -10,12 +10,6 @@ import UIKit
 
 // MARK: - Drink List View Controller
 final class DrinkListViewController: UIViewController {
-    // MARK: Mode
-    enum Mode {
-        case empty
-        case normal
-    }
-    
     // MARK: Properties
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -33,19 +27,7 @@ final class DrinkListViewController: UIViewController {
         return view
     }()
     
-    var mode: Mode = .normal {
-        didSet {
-            switch mode {
-            case .empty:
-                collectionView.isHidden = true
-                emptyView.isHidden = false
-            case .normal:
-                collectionView.isHidden = false
-                emptyView.isHidden = true
-            }
-        }
-    }
-    
+    var viewModel: DrinkListViewModel!
     var addDrink: (() -> ())?
     var didSelect: (() -> ())?
     
@@ -80,12 +62,24 @@ final class DrinkListViewController: UIViewController {
     func drinkCreationAction(sender: UIBarButtonItem) {
         addDrink?()
     }
+    
+    // MARK: Public Methods
+    func updateUI(with state: DrinkListState) {
+        switch state {
+        case .empty:
+            collectionView.isHidden = true
+            emptyView.isHidden = false
+        case .normal:
+            collectionView.isHidden = false
+            emptyView.isHidden = true
+        }
+    }
 }
 
 // MARK: - Collection View Data Source
 extension DrinkListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel.state.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

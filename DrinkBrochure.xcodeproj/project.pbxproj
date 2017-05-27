@@ -25,6 +25,8 @@
 		9B8AE38A1E9DBFE400A4D6C5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */; };
 		9B916A651ED90DB50088BD95 /* DrinkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B916A641ED90DB50088BD95 /* DrinkState.swift */; };
 		9B916A671ED90F1F0088BD95 /* DrinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B916A661ED90F1F0088BD95 /* DrinkViewModel.swift */; };
+		9B916A691ED912B60088BD95 /* DrinkListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B916A681ED912B60088BD95 /* DrinkListState.swift */; };
+		9B916A6B1ED913240088BD95 /* DrinkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B916A6A1ED913240088BD95 /* DrinkListViewModel.swift */; };
 		9BA081641EC3FF21004DC4F7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA081631EC3FF21004DC4F7 /* Router.swift */; };
 		9BB9A14E1E9DBAD900ABBC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */; };
 		9BB9A1551E9DBAD900ABBC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		9B8AE3881E9DBFE400A4D6C5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9B916A641ED90DB50088BD95 /* DrinkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkState.swift; path = Drink/DrinkState.swift; sourceTree = "<group>"; };
 		9B916A661ED90F1F0088BD95 /* DrinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkViewModel.swift; path = Drink/DrinkViewModel.swift; sourceTree = "<group>"; };
+		9B916A681ED912B60088BD95 /* DrinkListState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkListState.swift; path = DrinkList/DrinkListState.swift; sourceTree = "<group>"; };
+		9B916A6A1ED913240088BD95 /* DrinkListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DrinkListViewModel.swift; path = DrinkList/DrinkListViewModel.swift; sourceTree = "<group>"; };
 		9BA081631EC3FF21004DC4F7 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = Common/Router.swift; sourceTree = "<group>"; };
 		9BB9A14A1E9DBAD900ABBC3D /* DrinkBrochure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkBrochure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 			children = (
 				9BC426D71EA860380092896B /* DrinkCell.swift */,
 				9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */,
+				9B916A6A1ED913240088BD95 /* DrinkListViewModel.swift */,
+				9B916A681ED912B60088BD95 /* DrinkListState.swift */,
 				9B2123A51EA848F50059B4E0 /* EmptyView.swift */,
 			);
 			name = DrinkList;
@@ -380,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BBD6DE11EB85096000847CC /* ImagePickerConfiguration.swift in Sources */,
+				9B916A6B1ED913240088BD95 /* DrinkListViewModel.swift in Sources */,
 				9BBDE0631EB17ECA00A59C0D /* FetchRequest.swift in Sources */,
 				9B4C1FE41EA7081A00FFD36D /* DrinkListViewController.swift in Sources */,
 				9BBDE0611EB17ECA00A59C0D /* Drink.swift in Sources */,
@@ -397,6 +404,7 @@
 				9B916A671ED90F1F0088BD95 /* DrinkViewModel.swift in Sources */,
 				9BBDE0601EB17ECA00A59C0D /* Database.swift in Sources */,
 				9B834DAC1EB6DDE30089E256 /* NotificationDescriptor.swift in Sources */,
+				9B916A691ED912B60088BD95 /* DrinkListState.swift in Sources */,
 				9B4C17861EB816CF00774D1B /* UIAlertController+Helpers.swift in Sources */,
 				9B85F19D1EA99A9600132ADF /* DrinkView.swift in Sources */,
 			);

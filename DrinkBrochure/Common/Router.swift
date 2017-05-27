@@ -19,7 +19,12 @@ final class Router {
     }
     
     func configure(_ drinkListViewController: DrinkListViewController, in navigationController: UINavigationController) {
-        drinkListViewController.mode = .normal
+        let viewModel = DrinkListViewModel(state: .normal) { [weak viewController = drinkListViewController] (state) in
+            guard let strongDrinkListVC = viewController else { return }
+
+            strongDrinkListVC.updateUI(with: state)
+        }
+        drinkListViewController.viewModel = viewModel
         
         drinkListViewController.addDrink = { [weak viewController = drinkListViewController] in
             guard let strongDrinkListVC = viewController else { return }
@@ -39,9 +44,9 @@ final class Router {
     
     func configure(_ drinkViewController: DrinkViewController, with state: DrinkState) {
         let viewModel = DrinkViewModel(state: state) { [weak viewController = drinkViewController] (state) in
-            guard let drinkVC = viewController else { return }
+            guard let strongDrinkVC = viewController else { return }
             
-            drinkVC.updateUI(with: state)
+            strongDrinkVC.updateUI(with: state)
         }
         drinkViewController.viewModel = viewModel
         
