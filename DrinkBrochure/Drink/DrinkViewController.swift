@@ -10,13 +10,6 @@ import UIKit
 
 // MARK: - Drink View Controller
 final class DrinkViewController: UIViewController {
-    // MARK: Mode
-    enum Mode {
-        case creation
-        case editing
-        case presentation
-    }
-    
     // MARK: Properties
     fileprivate lazy var drinkView: DrinkView = {
         let view = DrinkView()
@@ -26,40 +19,17 @@ final class DrinkViewController: UIViewController {
         return view
     }()
     
-    private var mode: Mode {
-        didSet {
-            configureDrinkView()
-        }
-    }
-    
+    var viewModel: DrinkViewModel!
     var didSelectImage: (() -> ())?
     var presentCamera: (() -> ())?
     var presentPhotoLibrary: (() -> ())?
-    
-    // MARK: Designated Initializer
-    init(mode: Mode) {
-        self.mode = mode
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if case .creation = mode {
-            let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(sender:)))
-            navigationItem.leftBarButtonItem = cancelItem
-        }
-        
         view.backgroundColor = UIColor.white
         view.addSubview(drinkView)
-        
-        configureDrinkView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,9 +81,13 @@ final class DrinkViewController: UIViewController {
         center.removeObserver(self, name: UIViewController.keyboardWillHide.name, object: nil)
     }
     
-    private func configureDrinkView() {
-        switch mode {
+    // MARK: Public Methods
+    func updateUI(with state: DrinkState) {
+        switch state {
         case .creation:
+            let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(sender:)))
+            navigationItem.leftBarButtonItem = cancelItem
+            
             drinkView.deleteButton.isHidden = true
             drinkView.imageView.isUserInteractionEnabled = true
             drinkView.textField.isUserInteractionEnabled = true

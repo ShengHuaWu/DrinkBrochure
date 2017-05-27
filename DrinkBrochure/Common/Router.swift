@@ -9,36 +9,42 @@
 import UIKit
 
 final class Router {
-    func configure(window: UIWindow) {
+    func configure(_ window: UIWindow?) {
         let drinkListVC = DrinkListViewController()
         let navigationController = UINavigationController(rootViewController: drinkListVC)
-        configure(drinkListViewController: drinkListVC)
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+        configure(drinkListVC, in: navigationController)
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
     
-    func configure(drinkListViewController: DrinkListViewController) {
+    func configure(_ drinkListViewController: DrinkListViewController, in navigationController: UINavigationController) {
         drinkListViewController.mode = .normal
-        drinkListViewController.addDrink = { [weak viewController = drinkListViewController, weak self] in
-            guard let strongDrinkListVC = viewController,
-                let strongSelf = self else { return }
+        
+        drinkListViewController.addDrink = { [weak viewController = drinkListViewController] in
+            guard let strongDrinkListVC = viewController else { return }
             
-            let drinkVC = DrinkViewController(mode: .creation)
-            strongSelf.configure(drinkViewController: drinkVC)
+            let drinkVC = DrinkViewController()
+            self.configure(drinkVC, with: .creation)
             let navigationController = UINavigationController(rootViewController: drinkVC)
             strongDrinkListVC.present(navigationController, animated: true, completion: nil)
         }
-        drinkListViewController.didSelect = { [weak viewController = drinkListViewController, weak self] in
-            guard let strongDrinkListVC = viewController,
-                let strongSelf = self else { return }
-            
-            let drinkVC = DrinkViewController(mode: .presentation)
-            strongSelf.configure(drinkViewController: drinkVC)
-            strongDrinkListVC.navigationController?.pushViewController(drinkVC, animated: true)
+        
+        drinkListViewController.didSelect = {
+            let drinkVC = DrinkViewController()
+            self.configure(drinkVC, with: .presentation)
+            navigationController.pushViewController(drinkVC, animated: true)
         }
     }
     
-    func configure(drinkViewController: DrinkViewController) {
+    func configure(_ drinkViewController: DrinkViewController, with state: DrinkState) {
+        let viewModel = DrinkViewModel(state: state) { [weak viewController = drinkViewController] (state) in
+            guard let drinkVC = viewController else { return }
+            
+            drinkVC.updateUI(with: state)
+        }
+        drinkViewController.viewModel = viewModel
+        
         drinkViewController.presentCamera = { [weak viewController = drinkViewController] in
             guard let strongDrinkVC = viewController,
                 let imagePicker = UIImagePickerController(config: UIImagePickerController.cameraImage) else { return }
@@ -46,6 +52,7 @@ final class Router {
             imagePicker.delegate = strongDrinkVC
             strongDrinkVC.present(imagePicker, animated: true, completion: nil)
         }
+        
         drinkViewController.presentPhotoLibrary = { [weak viewController = drinkViewController] in
             guard let strongDrinkVC = viewController,
                 let imagePicker = UIImagePickerController(config: UIImagePickerController.photoLibraryImage) else { return }
@@ -53,6 +60,7 @@ final class Router {
             imagePicker.delegate = strongDrinkVC
             strongDrinkVC.present(imagePicker, animated: true, completion: nil)
         }
+        
         drinkViewController.didSelectImage = { [weak viewController = drinkViewController] in
             guard let strongDrinkVC = viewController else { return }
             
