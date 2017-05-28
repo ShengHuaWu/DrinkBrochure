@@ -19,20 +19,29 @@ class DrinkViewControllerTests: FBSnapshotTestCase {
     
     // MARK: - Enabled Tests
     func testCreationMode() {
-        let drinkVC = DrinkViewController(mode: .creation)
+        let drinkVC = DrinkViewController()
+        let _ = DrinkViewModel(state: .creation) { (state) in
+            drinkVC.updateUI(with: state)
+        }
         
         FBSnapshotVerifyView(drinkVC.view)
     }
     
     func testEditingMode() {
-        let drinkVC = DrinkViewController(mode: .editing)
+        let drinkVC = DrinkViewController()
+        let _ = DrinkViewModel(state: .editing) { (state) in
+            drinkVC.updateUI(with: state)
+        }
         
         FBSnapshotVerifyView(drinkVC.view)
     }
     
     func testPresentationMode() {
-        let drinkVC = DrinkViewController(mode: .presentation)
-        
+        let drinkVC = DrinkViewController()
+        let _ = DrinkViewModel(state: .presentation) { (state) in
+            drinkVC.updateUI(with: state)
+        }
+                
         FBSnapshotVerifyView(drinkVC.view)
     }
 }

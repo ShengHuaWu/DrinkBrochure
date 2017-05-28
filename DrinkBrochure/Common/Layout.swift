@@ -73,6 +73,15 @@ enum Distribution {
             return true
         }
     }
+    
+    func adjust(standard: CGFloat, at index: Int) -> CGFloat {
+        switch self {
+        case .equally:
+            return standard
+        case let .proportionally(resizedIndices, ratio):
+            return resizedIndices.contains(index) ? standard * ratio.value : standard
+        }
+    }
 }
 
 // MARK: - Cascading Layout
@@ -99,7 +108,7 @@ struct CascadingLayout: Layout {
         case .horizontal:
             var minX = rect.minX
             for (index, content) in zip(contents.indices, contents) {
-                let width = adjust(standard: standard, at: index)
+                let width = distribution.adjust(standard: standard, at: index)
                 let frame = CGRect(x: minX, y: rect.minY, width: width, height: rect.height)
                 content.layout(in: frame)
                 minX = frame.maxX + spacing
@@ -107,7 +116,7 @@ struct CascadingLayout: Layout {
         case .vertical:
             var minY = rect.minY
             for (index, content) in zip(contents.indices, contents) {
-                let height = adjust(standard: standard, at: index)
+                let height = distribution.adjust(standard: standard, at: index)
                 let frame = CGRect(x: rect.minX, y: minY, width: rect.width, height: height)
                 content.layout(in: frame)
                 minY = frame.maxY + spacing
@@ -122,15 +131,6 @@ struct CascadingLayout: Layout {
             return total / CGFloat(contents.count)
         case let .proportionally(resizedIndices, ratio):
             return total / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
-        }
-    }
-    
-    private func adjust(standard: CGFloat, at index: Int) -> CGFloat {
-        switch distribution {
-        case .equally:
-            return standard
-        case let .proportionally(resizedIndices, ratio):
-            return resizedIndices.contains(index) ? standard * ratio.value : standard
         }
     }
 }

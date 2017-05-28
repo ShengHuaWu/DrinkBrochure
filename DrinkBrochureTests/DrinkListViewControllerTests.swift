@@ -18,18 +18,24 @@ class DrinkListViewControllerTests: FBSnapshotTestCase {
     }
     
     // MARK: - Enabled Tests
-    func testEmptyMode() {        
+    func testEmptyMode() {
         let drinkListVC = DrinkListViewController()
+        let viewModel = DrinkListViewModel(state: .empty) { [weak viewController = drinkListVC] (state) in
+            viewController.flatMap{ $0.updateUI(with: state) }
+        }
         
-        drinkListVC.mode = .empty
+        drinkListVC.viewModel = viewModel
         
         FBSnapshotVerifyView(drinkListVC.view)
     }
     
     func testNormalMode() {
         let drinkListVC = DrinkListViewController()
+        let viewModel = DrinkListViewModel(state: .normal) { [weak viewController = drinkListVC] (state) in
+            viewController.flatMap{ $0.updateUI(with: state) }
+        }
         
-        drinkListVC.mode = .normal
+        drinkListVC.viewModel = viewModel
         
         FBSnapshotVerifyView(drinkListVC.view)
     }
