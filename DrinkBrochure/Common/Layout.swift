@@ -74,6 +74,15 @@ enum Distribution {
         }
     }
     
+    func standardValue(with totalValue: CGFloat, contentsCount: Int) -> CGFloat {
+        switch self {
+        case .equally:
+            return totalValue / CGFloat(contentsCount)
+        case let .proportionally(resizedIndices, ratio):
+            return totalValue / (CGFloat(contentsCount - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
+        }
+    }
+    
     func adjust(standard: CGFloat, at index: Int) -> CGFloat {
         switch self {
         case .equally:
@@ -103,7 +112,8 @@ struct CascadingLayout: Layout {
     }
     
     func layout(in rect: CGRect) {
-        let standard = standardValue(in: rect)
+        let total = axis.standardEdge(of: rect) - CGFloat(contents.count - 1) * spacing
+        let standard = distribution.standardValue(with: total, contentsCount: contents.count)
         switch axis {
         case .horizontal:
             var minX = rect.minX
@@ -121,16 +131,6 @@ struct CascadingLayout: Layout {
                 content.layout(in: frame)
                 minY = frame.maxY + spacing
             }
-        }
-    }
-    
-    private func standardValue(in rect: CGRect) -> CGFloat {
-        let total = axis.standardEdge(of: rect) - CGFloat(contents.count - 1) * spacing
-        switch distribution {
-        case .equally:
-            return total / CGFloat(contents.count)
-        case let .proportionally(resizedIndices, ratio):
-            return total / (CGFloat(contents.count - resizedIndices.count) + ratio.value * CGFloat(resizedIndices.count))
         }
     }
 }
