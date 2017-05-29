@@ -122,9 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				9BC426D71EA860380092896B /* DrinkCell.swift */,
+				9B916A681ED912B60088BD95 /* DrinkListState.swift */,
 				9B4C1FE31EA7081A00FFD36D /* DrinkListViewController.swift */,
 				9B916A6A1ED913240088BD95 /* DrinkListViewModel.swift */,
-				9B916A681ED912B60088BD95 /* DrinkListState.swift */,
 				9B2123A51EA848F50059B4E0 /* EmptyView.swift */,
 			);
 			name = DrinkList;
@@ -195,15 +195,15 @@
 		9BB9A14C1E9DBAD900ABBC3D /* DrinkBrochure */ = {
 			isa = PBXGroup;
 			children = (
+				9B8AE38F1E9DC31C00A4D6C5 /* Common */,
+				9B85F19B1EA9991500132ADF /* Drink */,
+				9B4C1FE51EA7082200FFD36D /* DrinkList */,
 				9BB9A14D1E9DBAD900ABBC3D /* AppDelegate.swift */,
 				9BB9A1541E9DBAD900ABBC3D /* Assets.xcassets */,
 				9BB9A1561E9DBAD900ABBC3D /* LaunchScreen.storyboard */,
 				9BB9A1591E9DBAD900ABBC3D /* Info.plist */,
 				9B2D7AF61EC2B7E700AB19EB /* Localizable.strings */,
 				9B2D7AF91EC2B7EE00AB19EB /* InfoPlist.strings */,
-				9B8AE38F1E9DC31C00A4D6C5 /* Common */,
-				9B85F19B1EA9991500132ADF /* Drink */,
-				9B4C1FE51EA7082200FFD36D /* DrinkList */,
 			);
 			path = DrinkBrochure;
 			sourceTree = "<group>";
