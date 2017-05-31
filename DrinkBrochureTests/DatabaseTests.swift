@@ -53,7 +53,7 @@ class DatabaseTests: XCTestCase {
         database.createOrUpdate(model: whiskey, with: DrinkObject.init)
         let whiskeyInDB = database.fetch(with: Drink.all).first!
         
-        let newDrink = Drink(drinkID: whiskeyInDB.drinkID, createdAt: whiskeyInDB.createdAt, rating: .outstanding, location: whiskeyInDB.location, category: .other(name: "unknown"), photoURL: URL(string: "https://google.com")!, name: nil, comment: "Excellent!")
+        let newDrink = Drink(drinkID: whiskeyInDB.drinkID, createdAt: whiskeyInDB.createdAt, rating: .outstanding, location: whiskeyInDB.location, category: .other(name: "unknown"), name: nil, comment: "Excellent!")
         database.createOrUpdate(model: newDrink, with: DrinkObject.init)
         
         database.verifyDrinkCreationOrUpdating(newDrink: newDrink)
@@ -97,7 +97,6 @@ extension Database {
         XCTAssertEqual(drinkInDB.location.coordinate.latitude, newDrink.location.coordinate.latitude, "location latitude", file: file, line: line)
         XCTAssertEqual(drinkInDB.location.coordinate.longitude, newDrink.location.coordinate.longitude, "location longitude", file: file, line: line)
         XCTAssertEqual(drinkInDB.category, newDrink.category, "category", file: file, line: line)
-        XCTAssertEqual(drinkInDB.photoURL, newDrink.photoURL, "photo URL", file: file, line: line)
         XCTAssertEqual(drinkInDB.name, newDrink.name, "name", file: file, line: line)
         XCTAssertEqual(drinkInDB.comment, newDrink.comment, "comment", file: file, line: line)
     }
@@ -117,7 +116,6 @@ extension Database {
         XCTAssertEqual(drinkInDB.location.coordinate.latitude, expectedDrink.location.coordinate.latitude, "location latitude", file: file, line: line)
         XCTAssertEqual(drinkInDB.location.coordinate.longitude, expectedDrink.location.coordinate.longitude, "location longitude", file: file, line: line)
         XCTAssertEqual(drinkInDB.category, expectedDrink.category, "category", file: file, line: line)
-        XCTAssertEqual(drinkInDB.photoURL, expectedDrink.photoURL, "photo URL", file: file, line: line)
         XCTAssertEqual(drinkInDB.name, expectedDrink.name, "name", file: file, line: line)
         XCTAssertEqual(drinkInDB.comment, expectedDrink.comment, "comment", file: file, line: line)
     }

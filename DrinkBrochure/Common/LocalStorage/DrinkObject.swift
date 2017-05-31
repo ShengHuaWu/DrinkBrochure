@@ -17,7 +17,6 @@ final class DrinkObject: Object {
     dynamic var latitude: Double = 0.0
     dynamic var longitude: Double = 0.0
     dynamic var category: String = ""
-    dynamic var photoURLString: String = ""
     dynamic var name: String? = nil
     dynamic var comment: String? = nil
     
@@ -44,7 +43,6 @@ extension DrinkObject {
         self.latitude = drink.location.coordinate.latitude
         self.longitude = drink.location.coordinate.longitude
         self.category = drink.category.description
-        self.photoURLString = drink.photoURL.absoluteString
         self.name = drink.name
         self.comment = drink.comment
     }

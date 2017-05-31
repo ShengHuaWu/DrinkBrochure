@@ -6,11 +6,35 @@
 //  Copyright © 2017 ShengHua Wu. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+// MARK: - Asset
+struct Asset {
+    let save: (UIImage) throws -> ()
+    let load: () -> UIImage?
+}
+
+// MARK: - Drink Extension
+extension Drink {
+    // TODO: This is just a temporary solution
+    func asset(with fileManager: FileManager = FileManager.default, userDefaults: UserDefaults = UserDefaults.standard) -> Asset? {
+        guard let directoryURL = userDefaults.directoryURL() else { return nil }
+        
+        let url = directoryURL.appendingPathComponent(drinkID)
+
+        return Asset(save: { (image) in
+            let data = UIImageJPEGRepresentation(image, 1.0)
+            try data?.write(to: url)
+        }, load: { () -> UIImage? in
+            guard fileManager.fileExists(atPath: url.path) else { return nil }
+            
+            return UIImage(contentsOfFile: url.path)
+        })
+    }
+}
 
 // MARK: - Image Provider
 final class ImageProvider {
-    // MARK: Public Methods
     static func setUp(with fileManager: FileManagerProtocol = FileManager.default, userDefaults: UserDefaults = UserDefaults.standard) {
         guard userDefaults.directoryURL() == nil else { return }
         

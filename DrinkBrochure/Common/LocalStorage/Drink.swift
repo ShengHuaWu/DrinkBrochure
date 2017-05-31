@@ -32,7 +32,6 @@ struct Drink {
     let rating: RatingScale
     let location: CLLocation
     let category: Category
-    let photoURL: URL
     let name: String?
     let comment: String?
 }
@@ -81,16 +80,11 @@ extension Drink {
         let location = CLLocation(latitude: object.latitude, longitude: object.longitude)
         let category = Category(name: object.category)
         
-        guard let url = URL(string: object.photoURLString) else {
-            fatalError("Photo URL is invalid")
-        }
-        
         self.drinkID = object.drinkID
         self.createdAt = object.createdAt
         self.rating = rating
         self.location = location
         self.category = category
-        self.photoURL = url
         self.name = object.name
         self.comment = object.comment
     }
