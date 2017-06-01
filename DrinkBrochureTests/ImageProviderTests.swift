@@ -11,12 +11,19 @@ import XCTest
 
 // MARK: - Image Provider Tests
 class ImageProviderTests: XCTestCase {
+    // MARK: Properties
+    private var imageProvider: ImageProvider!
+    
     // MARK: Override Methods
     override func setUp() {
         super.setUp()
+        
+        imageProvider = ImageProvider()
     }
     
     override func tearDown() {
+        imageProvider = nil
+        
         super.tearDown()
     }
     
@@ -30,6 +37,14 @@ class ImageProviderTests: XCTestCase {
         
         fileManager.verify()
         XCTAssertNotNil(userDefaults.directoryURL())
+    }
+    
+    func testLoadWithoutFileExist() {
+        let url = URL(string: "https://developer.apple.com")!
+        
+        let image = imageProvider.load(at: url) { _ in return false }
+        
+        XCTAssertNil(image)
     }
 }
 

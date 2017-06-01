@@ -8,31 +8,6 @@
 
 import UIKit
 
-// MARK: - Asset
-struct Asset {
-    let save: (UIImage) throws -> ()
-    let load: () -> UIImage?
-}
-
-// MARK: - Drink Extension
-extension Drink {
-    // TODO: This is just a temporary solution
-    func asset(with fileManager: FileManager = FileManager.default, userDefaults: UserDefaults = UserDefaults.standard) -> Asset? {
-        guard let directoryURL = userDefaults.directoryURL() else { return nil }
-        
-        let url = directoryURL.appendingPathComponent(drinkID)
-
-        return Asset(save: { (image) in
-            let data = UIImageJPEGRepresentation(image, 1.0)
-            try data?.write(to: url)
-        }, load: { () -> UIImage? in
-            guard fileManager.fileExists(atPath: url.path) else { return nil }
-            
-            return UIImage(contentsOfFile: url.path)
-        })
-    }
-}
-
 // MARK: - Image Provider
 final class ImageProvider {
     static func setUp(with fileManager: FileManagerProtocol = FileManager.default, userDefaults: UserDefaults = UserDefaults.standard) {
@@ -43,6 +18,27 @@ final class ImageProvider {
         let directoryURL = documentURL.appendingPathComponent(uniqueString)
         try! fileManager.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
         userDefaults.set(directoryURL)
+    }
+    
+    func save(_ image: UIImage, to url: URL) throws {
+        try UIImageJPEGRepresentation(image, 1.0).flatMap{ try $0.write(to: url) }
+    }
+    
+    func load(at url: URL, with exist: (URL) -> Bool = { FileManager.default.fileExists(atPath: $0.path) }) -> UIImage? {
+        guard exist(url) else { return nil }
+                
+        return UIImage(contentsOfFile: url.path)
+    }
+}
+
+// MARK: - Drink Extension
+extension Drink {
+    func photoURL(with userDefaults: UserDefaults = UserDefaults.standard) -> URL {
+        guard let directoryURL = userDefaults.directoryURL() else {
+            fatalError("Directory doesn'r exist.")
+        }
+        
+        return directoryURL.appendingPathComponent(drinkID)
     }
 }
 
