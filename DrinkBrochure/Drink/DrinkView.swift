@@ -77,4 +77,30 @@ final class DrinkView: UIScrollView {
         let bottomView = deleteButton.isHidden ? textView : deleteButton
         contentSize = CGSize(width: frame.width, height: bottomView.frame.maxY + margin)
     }
+    
+    // MARK: Public Methods
+    func configure(with state: DrinkState) {
+        switch state {
+        case .creation:
+            deleteButton.isHidden = true
+            imageView.isUserInteractionEnabled = true
+            textField.isUserInteractionEnabled = true
+            textView.isUserInteractionEnabled = true
+            ratingView.isUserInteractionEnabled = true
+        case .editing:
+            deleteButton.isHidden = false
+            imageView.isUserInteractionEnabled = true
+            textField.isUserInteractionEnabled = true
+            textView.isUserInteractionEnabled = true
+            ratingView.isUserInteractionEnabled = true
+        case .presentation:
+            deleteButton.isHidden = true
+            imageView.isUserInteractionEnabled = false
+            textField.isUserInteractionEnabled = false
+            textView.isUserInteractionEnabled = false
+            ratingView.isUserInteractionEnabled = false
+        }
+        
+        setNeedsLayout()
+    }
 }

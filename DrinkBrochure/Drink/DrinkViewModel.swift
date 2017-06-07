@@ -9,6 +9,7 @@
 import Foundation
 
 final class DrinkViewModel {
+    // MARK: Properties
     private(set) var state: DrinkState {
         didSet {
             callback(state)
@@ -17,10 +18,20 @@ final class DrinkViewModel {
     
     private let callback: (DrinkState) -> ()
     
+    // MARK: Designated Initializer
     init(state: DrinkState, callback: @escaping (DrinkState) -> ()) {
         self.state = state
         self.callback = callback
         
         self.callback(self.state)
+    }
+    
+    // MARK: Public Methods
+    func switchToPresentation() {
+        state = .presentation
+    }
+    
+    func switchToEditing() {
+        state = .editing
     }
 }

@@ -18,7 +18,7 @@ final class DrinkViewController: UIViewController {
         
         return view
     }()
-    
+        
     var viewModel: DrinkViewModel!
     var didSelectImage: (() -> ())?
     var presentCamera: (() -> ())?
@@ -55,6 +55,14 @@ final class DrinkViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func editAction(sender: UIBarButtonItem) {
+        viewModel.switchToEditing()
+    }
+    
+    func doneAction(sender: UIBarButtonItem) {
+        viewModel.switchToPresentation()
+    }
+    
     func selectImageAction(sender: UITapGestureRecognizer) {
         didSelectImage?()
     }
@@ -87,25 +95,15 @@ final class DrinkViewController: UIViewController {
         case .creation:
             let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(sender:)))
             navigationItem.leftBarButtonItem = cancelItem
-            
-            drinkView.deleteButton.isHidden = true
-            drinkView.imageView.isUserInteractionEnabled = true
-            drinkView.textField.isUserInteractionEnabled = true
-            drinkView.textView.isUserInteractionEnabled = true
-            drinkView.ratingView.isUserInteractionEnabled = true
         case .editing:
-            drinkView.deleteButton.isHidden = false
-            drinkView.imageView.isUserInteractionEnabled = true
-            drinkView.textField.isUserInteractionEnabled = true
-            drinkView.textView.isUserInteractionEnabled = true
-            drinkView.ratingView.isUserInteractionEnabled = true
+            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction(sender:)))
+            navigationItem.rightBarButtonItem = doneItem
         case .presentation:
-            drinkView.deleteButton.isHidden = true
-            drinkView.imageView.isUserInteractionEnabled = false
-            drinkView.textField.isUserInteractionEnabled = false
-            drinkView.textView.isUserInteractionEnabled = false
-            drinkView.ratingView.isUserInteractionEnabled = false
+            let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction(sender:)))
+            navigationItem.rightBarButtonItem = editItem
         }
+        
+        drinkView.configure(with: state)
     }
 }
 
