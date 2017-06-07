@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class Router {
+struct Router {
     func configure(_ window: UIWindow?) {
         let drinkListVC = DrinkListViewController()
         let navigationController = UINavigationController(rootViewController: drinkListVC)
