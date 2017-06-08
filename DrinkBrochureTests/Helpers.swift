@@ -12,10 +12,10 @@ import CoreLocation
 
 // MARK: - Seed Data
 extension Drink {
-    static let beer = Drink(drinkID: "", createdAt: Date(), rating: .good, location: CLLocation(latitude: 0.0, longitude: 0.0), category: .beer, name: "Good Beer", comment: "This is beer.")
-    static let wine = Drink(drinkID: "", createdAt: Date(), rating: .mediocre, location: CLLocation(latitude: 20.0, longitude: 100.0), category: .wine, name: nil, comment: "This is wine.")
-    static let whiskey = Drink(drinkID: "", createdAt: Date(), rating: .notRecommended, location: CLLocation(latitude: 5.0, longitude: 70.0), category: .whiskey, name: "Not Recommended", comment: "This is bad whiskey.")
-    static let sake = Drink(drinkID: "", createdAt: Date(), rating: .veryGood, location: CLLocation(latitude: 10.0, longitude: 30.0), category: .sake, name: "Sake", comment: "This is very good.")
+    static let beer = Drink(rating: .good, location: CLLocation(latitude: 0.0, longitude: 0.0), category: .beer, name: "Good Beer", comment: "This is beer.")
+    static let wine = Drink(rating: .mediocre, location: CLLocation(latitude: 20.0, longitude: 100.0), category: .wine, comment: "This is wine.")
+    static let whiskey = Drink(rating: .notRecommended, location: CLLocation(latitude: 5.0, longitude: 70.0), category: .whiskey, name: "Not Recommended")
+    static let sake = Drink(rating: .veryGood, location: CLLocation(latitude: 10.0, longitude: 30.0), category: .sake, name: "Sake", comment: "This is very good.")
     static let many = [beer, wine, whiskey, sake]
 }
 

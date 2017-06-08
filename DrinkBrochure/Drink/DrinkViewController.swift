@@ -23,6 +23,7 @@ final class DrinkViewController: UIViewController {
     var didSelectImage: (() -> ())?
     var presentCamera: (() -> ())?
     var presentPhotoLibrary: (() -> ())?
+    var didCreateDrink: (() -> ())?
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -55,11 +56,21 @@ final class DrinkViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func doneCreationAction(sender: UIBarButtonItem) {
+        guard let image = drinkView.imageView.image else {
+            // TODO: Show alert
+            return
+        }
+        viewModel.createDrink(with: image)
+        
+        didCreateDrink?()
+    }
+    
     func editAction(sender: UIBarButtonItem) {
         viewModel.switchToEditing()
     }
     
-    func doneAction(sender: UIBarButtonItem) {
+    func doneEditingAction(sender: UIBarButtonItem) {
         viewModel.switchToPresentation()
     }
     
@@ -95,8 +106,11 @@ final class DrinkViewController: UIViewController {
         case .creation:
             let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(sender:)))
             navigationItem.leftBarButtonItem = cancelItem
+            
+            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneCreationAction(sender:)))
+            navigationItem.rightBarButtonItem = doneItem
         case .editing:
-            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction(sender:)))
+            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneEditingAction(sender:)))
             navigationItem.rightBarButtonItem = doneItem
         case .presentation:
             let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction(sender:)))

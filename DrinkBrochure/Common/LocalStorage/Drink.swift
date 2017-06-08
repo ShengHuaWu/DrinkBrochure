@@ -34,6 +34,16 @@ struct Drink {
     let category: Category
     let name: String?
     let comment: String?
+    
+    init(drinkID: String = UUID().uuidString, createdAt: Date = Date(), rating: RatingScale, location: CLLocation, category: Category, name: String? = nil, comment: String? = nil) {
+        self.drinkID = drinkID
+        self.createdAt = createdAt
+        self.rating = rating
+        self.location = location
+        self.category = category
+        self.name = name
+        self.comment = comment
+    }
 }
 
 // MARK: - Drink Category Extension

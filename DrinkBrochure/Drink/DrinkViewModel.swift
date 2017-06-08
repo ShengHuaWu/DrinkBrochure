@@ -6,7 +6,8 @@
 //  Copyright © 2017 ShengHua Wu. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreLocation
 
 final class DrinkViewModel {
     // MARK: Properties
@@ -17,10 +18,14 @@ final class DrinkViewModel {
     }
     
     private let callback: (DrinkState) -> ()
+    private let database: Database
+    private let imageProvider: ImageProvider
     
     // MARK: Designated Initializer
-    init(state: DrinkState, callback: @escaping (DrinkState) -> ()) {
+    init(state: DrinkState, database: Database = Database(), imageProvider: ImageProvider = ImageProvider(), callback: @escaping (DrinkState) -> ()) {
         self.state = state
+        self.database = database
+        self.imageProvider = imageProvider
         self.callback = callback
         
         self.callback(self.state)
@@ -33,5 +38,16 @@ final class DrinkViewModel {
     
     func switchToEditing() {
         state = .editing
+    }
+    
+    func createDrink(with image: UIImage) {
+        let newDrink = Drink(rating: .notRecommended, location: CLLocation(latitude: 0, longitude: 0), category: .beer)
+        database.createOrUpdate(model: newDrink, with: DrinkObject.init)
+        
+        do {
+            try imageProvider.save(image, to: newDrink.photoURL())
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
