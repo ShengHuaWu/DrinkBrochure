@@ -21,7 +21,7 @@ class DrinkListViewControllerTests: FBSnapshotTestCase {
     func testEmptyMode() {
         let drinkListVC = DrinkListViewController()
         let viewModel = DrinkListViewModel(state: .empty) { [weak viewController = drinkListVC] (state) in
-            viewController.flatMap{ $0.updateUI(with: state) }
+            viewController?.updateUI(with: state)
         }
         
         drinkListVC.viewModel = viewModel
@@ -32,7 +32,7 @@ class DrinkListViewControllerTests: FBSnapshotTestCase {
     func testNormalMode() {
         let drinkListVC = DrinkListViewController()
         let viewModel = DrinkListViewModel(state: .normal) { [weak viewController = drinkListVC] (state) in
-            viewController.flatMap{ $0.updateUI(with: state) }
+            viewController?.updateUI(with: state)
         }
         
         drinkListVC.viewModel = viewModel

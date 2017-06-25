@@ -20,7 +20,7 @@ struct Router {
     
     func configure(_ drinkListViewController: DrinkListViewController, in navigationController: UINavigationController) {
         let viewModel = DrinkListViewModel(state: .normal) { [weak viewController = drinkListViewController] (state) in
-            viewController.flatMap { $0.updateUI(with: state) }
+            viewController?.updateUI(with: state)
         }
         drinkListViewController.viewModel = viewModel
         
@@ -42,7 +42,7 @@ struct Router {
     
     func configure(_ drinkViewController: DrinkViewController, with state: DrinkState) {
         let viewModel = DrinkViewModel(state: state) { [weak viewController = drinkViewController] (state) in
-            viewController.flatMap { $0.updateUI(with: state) }
+            viewController?.updateUI(with: state)
         }
         drinkViewController.viewModel = viewModel
         
