@@ -61,6 +61,8 @@ final class DrinkViewController: UIViewController {
             // TODO: Show alert
             return
         }
+        
+        // TODO: Not finish
         viewModel.createDrink(with: image)
         
         didCreateDrink?()
@@ -126,9 +128,7 @@ extension DrinkViewController: UIImagePickerControllerDelegate, UINavigationCont
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         
-        // TODO: Store image
-        drinkView.imageView.image = editedImage
-        
+        drinkView.imageView.image = editedImage        
         picker.dismiss(animated: true, completion: nil)
     }
 }
